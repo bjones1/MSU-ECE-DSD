@@ -27,12 +27,16 @@ module lab1(
     input [7:0] SW
 );
 
-// <p>The <a
-//         href="https://www.chipverify.com/verilog/verilog-assign-statement">assign</a>
-//     statement makes a wire-like connection. In this case, it connects
-//     the first 8 switches to the first 8 LEDs. SW0 is the right-most
-//     switch on the Basys 3 board; the order is right to left.</p>
-assign LED = SW;
+    // <p>The <a
+    //         href="https://www.chipverify.com/verilog/verilog-assign-statement">assign</a>
+    //     statement makes a wire-like connection. In this case, it connects
+    //     the first 8 switches to the first 8 LEDs. SW0 is the right-most
+    //     switch on the Basys 3 board; the order is right to left. The
+    //     equivalent schematic is:</p>
+    // <p><img
+    //         src="lab1_assign_schematic.png">
+    // </p>
+    assign LED = SW;
 
 // <p>Every module must contain this statement.</p>
 endmodule
