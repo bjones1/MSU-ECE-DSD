@@ -8,15 +8,24 @@
 //
 // <p>This code instantiates editors/viewers for code and doc blocks.
 const on_load = (currentScript) => {
+    // Instantiate the TinyMCE editor for doc blocks.
     tinymce.init({
         inline: true,
         plugins: 'advlist anchor charmap emoticons image link lists media nonbreaking quickbars searchreplace visualblocks visualchars table',
         // When true, this still prevents hyperlinks to anchors on the current page from working correctly. There's an onClick handler that prevents links in the current page from working -- need to look into this. See also <a href="https://github.com/tinymce/tinymce/issues/3836">a related GitHub issue</a>.
         //readonly: true,
+        relative_urls: true,
         selector: '.CodeChat-TinyMCEx',
         toolbar: 'numlist bullist',
+
+        // <h3>Settings for plugins</h3>
+        // <h4><a href="https://www.tiny.cloud/docs/plugins/opensource/image/">Image</a></h4>
+        image_caption: true,
+        image_advtab: true,
+        image_title: true,
     });
 
+    // Instantiate the Ace editor for code blocks.
     ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.5');
     for (const ace_tag of document.querySelectorAll(".CodeChat-ACE")) {
         ace.edit(ace_tag, {
@@ -34,7 +43,37 @@ const on_load = (currentScript) => {
             wrap: true,
         });
     }
+
+    // Set up for editing the indent of doc blocks.
+    for (const td of document.querySelectorAll(".CodeChat-doc-indent")) {
+        td.addEventListener("beforeinput", doc_block_indent_on_before_input);
+        td.addEventListener("input", doc_block_indent_on_input);
+    }
 };
+
+
+// <h3>Doc block indent editor</h3>
+// <p>Allow only spaces and delete/backspaces when editing the indent of a doc block.</p>
+const doc_block_indent_on_before_input = event => {
+    // Only modify the behavior of inserts.
+    if (event.data) {
+        // Block any insert that's not an insert of spaces.
+        if (event.data !== " ".repeat(event.data.length)) {
+            event.preventDefault();
+        }
+    }
+}
+
+
+// After an edit, the editor by default changes some non-breaking spaces into normal spaces. Undo this, since it breaks the layout. This is because normal spaces wrap, while non-breaking spaces don't; we need no wrapping to correctly set the indent.
+const doc_block_indent_on_input = event => {
+    // Save the current cursor position. Setting <code>innerHTML</code> loses it.
+    const offset = window.getSelection().anchorOffset;
+    // Replace any spaces with non-breaking spaces.
+    event.currentTarget.innerHTML = event.currentTarget.innerHTML.replaceAll(" ", "&nbsp;");
+    // Restore the current cursor position -- an offset into the text node inside this <code>&lt;tr&gt; element.
+    window.getSelection().setBaseAndExtent(event.currentTarget.childNodes[0], offset, event.currentTarget.childNodes[0], offset);
+}
 
 // <p>From <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event#checking_whether_loading_is_already_complete">MDN</a>.</p>
 //
@@ -49,7 +88,6 @@ if (document.readyState === 'loading') {
 }
 
 // <h2>Transforming the editor's contents back to code</h2>
-//
 // <p>This transforms the current editor contents into source code.</p>
 const editor_to_source_code = (
     // A string specifying the comment character(s) for the current programming language. A space will be added after this string before appending a line of doc block contents.
@@ -107,10 +145,17 @@ const editor_to_source_code = (
 // <p>Store the file handle for saves (and eventually opens) here.</p>
 let source_code_file_handle;
 
+// Get the filename and path from the HTML title -- currently, that's where <code>CodeToEditor.py</code> puts it. In the future, use an open dialog/drag-n-drop area.
+const get_filename = () => {
+    const filename = document.getElementsByTagName("title")[0].getAttribute("data-CodeChat-filename");
+    const extension = filename.split(".").pop();
+    return [filename, extension];
+}
+
+
 const on_save_as = async () => {
-    // Get the filename and path from the HTML title -- currently, that's where <code>CodeToEditor.py</code> puts it. In the future, use an open dialog/drag-n-drop area.
-    const filename = document.getElementsByTagName("title")[0].getAttribute("data-CodeChat-filename")
-    // There's no way to use this currently, because of security concerns.
+    const [filename, extension] = get_filename();
+    // There's no way to use this currently.
     //const path = document.title.getAttribute("data-CodeChat-path")
 
     // Save it to a local file. The following comes from a <a href="https://web.dev/file-system-access/#ask-the-user-to-pick-a-file-to-read">helpful tutorial</a>.
@@ -123,9 +168,25 @@ const on_save_as = async () => {
     document.getElementById("CodeChat-save-button").disabled = false;
 }
 
+
+// TODO: many missing mappings!
+const file_extension_to_comment = {
+    c: "//",
+    cpp: "//",
+    cc: "//",
+    js: "//",
+    py: "#",
+    // Verilog.
+    v: "//",
+    // Xilinx pin constraints file.
+    xdc: "#",
+}
+
 const on_save = async () => {
+    const [filename, extension] = get_filename();
+    const comment = file_extension_to_comment[extension];
     // This is the data to write &mdash; the source code.
-    const source_code = editor_to_source_code("//");
+    const source_code = editor_to_source_code(comment);
 
     // Create a FileSystemWritableFileStream to write to.
     const writable = await source_code_file_handle.createWritable();

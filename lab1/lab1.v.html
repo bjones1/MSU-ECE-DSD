@@ -30,8 +30,8 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor"></td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false"></td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><h1><code>lab1.v</code> - design source for lab 1</h1>
 <p>See the lab instructions to use this file for simulation and for
     programming the Basys 3 board.</p>
@@ -58,8 +58,8 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor"></td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false"></td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>A Verilog <a
         href="https://www.chipverify.com/verilog/verilog-modules">module</a>
     defines a component in a typical schematic. <a
@@ -86,8 +86,8 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>This defines outputs from the module: an array of 8 wires. (All
     ports are wires by default).</p></td>
                     </tr>
@@ -106,8 +106,8 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>This defines inputs to the module, also an array of 8 wires.</p></td>
                     </tr>
                 </tbody>
@@ -127,20 +127,24 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor"></td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>The <a
         href="https://www.chipverify.com/verilog/verilog-assign-statement">assign</a>
     statement makes a wire-like connection. In this case, it connects
     the first 8 switches to the first 8 LEDs. SW0 is the right-most
-    switch on the Basys 3 board; the order is right to left.</p></td>
+    switch on the Basys 3 board; the order is right to left. The
+    equivalent schematic is:</p>
+<p><img
+        src="lab1_assign_schematic.png">
+</p></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="CodeChat-code">
-            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="35">assign LED = SW;
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="39">    assign LED = SW;
 </div>
         </div>
 
@@ -151,8 +155,8 @@
                         <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
                         <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
                         <td class="CodeChat-ACE-padding"</td>
-                        <!-- This doc block's indent. -->
-                        <td class="ace_editor"></td>
+                        <!-- This doc block's indent. TODO: allow paste, but must only allow pasting spaces. -->
+                        <td class="ace_editor CodeChat-doc-indent" contenteditable onpaste="return false"></td>
                         <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Every module must contain this statement.</p></td>
                     </tr>
                 </tbody>
@@ -160,7 +164,7 @@
         </div>
 
         <div class="CodeChat-code">
-            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="38">endmodule</div>
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="42">endmodule</div>
         </div>
 
     </body>

@@ -83,9 +83,9 @@ module tb_leds;
         //     addition, making <code>i += 1</code> invalid as well. Instead, use
         //     <code>i = i + 1</code>.</p>
         for (i = 0; i != 256; i = i + 1) begin
-            // Assign i to the switch input.
+            // <p>Assign i to the switch input.</p>
             sw = i;
-            // Delay, to allow for propoagation time.
+            // <p>Delay, to allow for propoagation time.</p>
             #50;
             // <p>Check that the output matches the input.</p>
             if (led != i) begin
