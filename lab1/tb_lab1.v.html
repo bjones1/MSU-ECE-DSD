@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title data-CodeChat-filename="tb_lab1.v" data-CodeChat-path="C:\">tb_lab1.v - The CodeChat Editor</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.5/ace.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/rrqw1m3511pf4ag8c5zao97ad7ymvnhqu6z0995b1v63rqb5/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.5/beautify-html.min.js"></script>
+        <script src="CodeChatEditor.js" data-CodeChat-language-name=verilog></script>
+
+        <link rel="stylesheet" href="css/CodeChatEditor.css">
+    </head>
+    <body>
+        <p>
+            <button onclick="on_save_as();">
+                Save as
+            </button>
+            <button disabled onclick="on_save();" id="CodeChat-save-button">
+                Save
+            </button>
+        </p>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><h1>tb_lab1.v - Test bench for the <code><a
+            href="lab1.v.html">lab1.v</a></code> module</h1>
+<p>This file provides a series of tests (called a test bench) to
+    verify that the <code><a href="lab1.v.html">lab1.v</a></code>
+    module works correctly. Because this file will not be synthesized,
+    it can contain any code, including code that cannot be
+    synthesized.</p>
+<p>The timescale <a
+        href="https://www.chipverify.com/verilog/verilog-timescale">compiler
+        directive</a> specifies the time unit and precision for one
+    time unit. Therefore, the <a href="#delay-100">#100 delay
+        statement</a> which appears later in this file specifies a
+    delay of 100 ns.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="14">`timescale 1ns / 1ps
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>In contrast to <code><a href="lab1.v.html">lab1.v</a></code>, this
+    module contains no inputs or outputs; therefore, the ports are
+    omitted.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="19">module tb_leds;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>For testing, make the switches a register. Like variables in
+    traditional programming languages, <span
+        style="text-decoration: underline;"><strong><code>reg</code></strong></span>isters
+    may contain a value.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="25">    reg [7:0] sw;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>The outputs only need to be compared to the inputs, but don't need
+    to store a value. Declare them as wires.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="29">    wire [7:0] led;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>An <code>integer</code> is essentially a 32-bit register. It's a
+    convenient way to declare and use 32-bit values.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="33">    integer i;
+    integer errors = 0;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p><a
+        href="https://www.chipverify.com/verilog/verilog-module-instantiations">Instantiate</a>
+    the Unit Under Test (UUT). This means:</p>
+<ul>
+    <li>Place a copy of the <code>lab1</code> module here; name it
+        <code>uut</code>.</li>
+    <li>Connect <code>lab1</code>'s <code>LED</code> outputs to the
+        wires (declared a few lines earlier in this file) named
+        <code>led</code>.</li>
+    <li>Likewise, connect <code>lab1</code>'s <code>SW</code> inputs
+        to the registers named <code>sw</code> (also declared a few
+        lines earlier in this file).</li>
+</ul></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="49">    lab1 uut (
+        .LED(led),
+        .SW(sw)
+    );
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>The <a
+        href="https://www.chipverify.com/verilog/verilog-initial-block"><code>initial</code>
+        block</a> defines what this module does starting at time 0;
+    using <code>initial begin</code>...<code>end</code> allows that
+    definition to include multiple statements. That is, Verilog's
+    <code>begin</code>...<code>end</code> serves the same role a
+    C/C++'s <code>{</code>...<code>}</code>.This block can only be
+    used in simulation, not in synthesis.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="62">    initial begin</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Define the inital value for all inputs.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="64">        sw = 0;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p><a id="delay-100"></a>Wait 100 ns for global reset to finish.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="67">        #100;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>A <a
+        href="https://www.chipverify.com/verilog/verilog-display-tasks">display</a>
+    statement acts much like a <code>printf</code> statement in C or
+    <code>cout</code> in C++ by printing output to the screen.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="73">        $display(&quot;Applying vectors...\n&quot;);
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>To test the lab1 module, apply all possible inputs (the values 0 to
+    255) and check that each output matches with the input.</p>
+<p>Begin by initializing some variables.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="78">        i = 0;
+        errors = 0;</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Use a <code>for</code> loop to check each possible value. Note that
+    Verilog doesn't have the increment operator, so the expression
+    <code>++i</code> is invalid. Likewise, it doesn't allow inplace
+    addition, making <code>i += 1</code> invalid as well. Instead, use
+    <code>i = i + 1</code>.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="85">        for (i = 0; i != 256; i = i + 1) begin</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE">Assign i to the switch input.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="87">            sw = i;</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE">Delay, to allow for propoagation time.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="89">            #50;</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Check that the output matches the input.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="91">            if (led != i) begin
+                errors = errors + 1;
+            end
+        end
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Error check after the loop completes.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="97">        if (errors == 0) begin
+            $display(&quot;PASS: All test vectors passed\n&quot;);
+        end else begin
+            $display(&quot;FAIL: %d errors occurred\n&quot;, errors);
+        end
+    end
+
+endmodule</div>
+        </div>
+
+    </body>
+</html>

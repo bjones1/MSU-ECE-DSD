@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title data-CodeChat-filename="lab1.v" data-CodeChat-path="C:\">lab1.v - The CodeChat Editor</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.5/ace.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/rrqw1m3511pf4ag8c5zao97ad7ymvnhqu6z0995b1v63rqb5/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.5/beautify-html.min.js"></script>
+        <script src="CodeChatEditor.js" data-CodeChat-language-name=verilog></script>
+
+        <link rel="stylesheet" href="css/CodeChatEditor.css">
+    </head>
+    <body>
+        <p>
+            <button onclick="on_save_as();">
+                Save as
+            </button>
+            <button disabled onclick="on_save();" id="CodeChat-save-button">
+                Save
+            </button>
+        </p>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><h1><code>lab1.v</code> - design source for lab 1</h1>
+<p>See the lab instructions to use this file for simulation and for
+    programming the Basys 3 board.</p>
+<p>This is a design source file, which means that all the "software"
+    in this file will be synthesized into hardware, so that it can
+    then be programmed on the FPGA. Therefore, make sure you
+    understand what hardware lies behind each line of "code". In
+    contrast, the simulation source file <code><a
+            href="tb_lab1.v.html">tb_lab1.v</a></code> will not by
+    synthesized, and can contain code that's not synthesizable.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="11"></div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>A Verilog <a
+        href="https://www.chipverify.com/verilog/verilog-modules">module</a>
+    defines a component in a typical schematic. <a
+        href="https://www.chipverify.com/verilog/verilog-ports">Ports</a>,
+    which consist of inputs and/or outputs, allow the module to
+    connect to external devices. The top-level module in a Xilinx
+    design connects directly to pins on the FPGA; the <code><a
+            href="Basys3_Master.xdc.html">Basys3_Master.xdc</a></code>&nbsp;file
+    maps these names (<code>LED</code> and <code>SW</code>) to
+    physical pins on the FPGA.&nbsp;</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="22">module lab1(</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>This defines outputs from the module: an array of 8 wires. (All
+    ports are wires by default).</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="25">    output [7:0] LED,</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>This defines inputs to the module, also an array of 8 wires.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="27">    input [7:0] SW
+);
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>The <a
+        href="https://www.chipverify.com/verilog/verilog-assign-statement">assign</a>
+    statement makes a wire-like connection. In this case, it connects
+    the first 8 switches to the first 8 LEDs. SW0 is the right-most
+    switch on the Basys 3 board; the order is right to left.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="35">assign LED = SW;
+</div>
+        </div>
+
+        <div class="CodeChat-doc">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Spaces matching the number of digits in the ACE gutter's line number. TODO: fix this to match the number of digits of the last line of the last code block. Fix ACE to display this number of digits in all gutters. See https://stackoverflow.com/questions/56601362/manually-change-ace-line-numbers. -->
+                        <td class="CodeChat-ACE-gutter-padding ace_editor">&nbsp;&nbsp;&nbsp</td>
+                        <td class="CodeChat-ACE-padding"</td>
+                        <!-- This doc block's indent. -->
+                        <td class="ace_editor"></td>
+                        <td class="CodeChat-TinyMCE-td"><div class="CodeChat-TinyMCE"><p>Every module must contain this statement.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="CodeChat-code">
+            <div class="CodeChat-ACE" data-CodeChat-firstLineNumber="38">endmodule</div>
+        </div>
+
+    </body>
+</html>
