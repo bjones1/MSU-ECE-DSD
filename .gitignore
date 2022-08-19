@@ -1,0 +1,9 @@
+# <h1><code>.gitignore</code></h1>
+.Xil
+*.cache
+*.hw
+*.runs
+*.sim
+*.jou
+*.log
+*.str
