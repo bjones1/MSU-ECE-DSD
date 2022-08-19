@@ -8,7 +8,7 @@
 // <p>The timescale <a
 //         href="https://www.chipverify.com/verilog/verilog-timescale">compiler
 //         directive</a> specifies the time unit and precision for one
-//     time unit. Therefore, the <a href="#100-delay">#100 delay
+//     time unit. Therefore, the <a href="#delay-100">#100 delay
 //         statement</a> which appears later in this file specifies a
 //     delay of 100 ns.</p>
 `timescale 1ns / 1ps
@@ -27,7 +27,7 @@ module tb_leds;
     // <p>The outputs only need to be compared to the inputs, but don't need
     //     to store a value. Declare them as wires.</p>
     wire [7:0] led;
-    
+
     // <p>An <code>integer</code> is essentially a 32-bit register. It's a
     //     convenient way to declare and use 32-bit values.</p>
     integer i;
@@ -47,7 +47,7 @@ module tb_leds;
     //         lines earlier in this file).</li>
     // </ul>
     lab1 uut (
-        .LED(led), 
+        .LED(led),
         .SW(sw)
     );
 
@@ -65,13 +65,13 @@ module tb_leds;
 
         // <p><a id="delay-100"></a>Wait 100 ns for global reset to finish.</p>
         #100;
-        
+
         // <p>A <a
         //         href="https://www.chipverify.com/verilog/verilog-display-tasks">display</a>
         //     statement acts much like a <code>printf</code> statement in C or
         //     <code>cout</code> in C++ by printing output to the screen.</p>
         $display("Applying vectors...\n");
-        
+
         // <p>To test the lab1 module, apply all possible inputs (the values 0 to
         //     255) and check that each output matches with the input.</p>
         // <p>Begin by initializing some variables.</p>
@@ -84,15 +84,15 @@ module tb_leds;
         //     <code>i = i + 1</code>.</p>
         for (i = 0; i != 256; i = i + 1) begin
             // Assign i to the switch input.
-            sw = i;  
+            sw = i;
             // Delay, to allow for propoagation time.
             #50;
             // <p>Check that the output matches the input.</p>
             if (led != i) begin
                 errors = errors + 1;
             end
-        end 
-        
+        end
+
         // <p>Error check after the loop completes.</p>
         if (errors == 0) begin
             $display("PASS: All test vectors passed\n");
@@ -100,5 +100,5 @@ module tb_leds;
             $display("FAIL: %d errors occurred\n", errors);
         end
     end
-      
+
 endmodule
