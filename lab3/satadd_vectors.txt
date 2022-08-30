@@ -1,0 +1,83 @@
+2 4 5 9       # 4 + 5 = 9
+1 4 5 9       # 4 + 5 = 9
+1 4 5 9       # 4 + 5 = 9
+2 b00 100 c00  # 0xb00 + 0x100 = 0xc00
+1 b00 100 c00  # 0xb00 + 0x100 = 0xc00, neg+neg=neg, no signed overflow
+1 b00 100 c00  # 0xb00 + 0x100 = 0xc00, no carry out, no unsigned overflow
+2 7ff 1 800   # normal add   
+1 7ff 1 7ff   # pos+pos = neg, signed overflow, clamp to most positive
+0 7ff 1 800   # 2047 + 1 = 2048, no saturation
+2 fff 1 000   # unsigned overflow back to 0
+1 fff 1 000   # -1 + 1 = 0, no saturation
+0 fff 1 fff   #unsigned overflow, clamp to maximum value
+2 800 fff 7ff # normal binary add, overflows and wraps
+1 800 fff 800 # neg+neg = pos, signed overflow, clamp to most negative
+0 800 fff fff # unsigned overflow, clamp to most positive number
+0	86C	FDE	FFF
+0	597	ECC	FFF
+0	F93	539	FFF
+0	F68	D06	FFF
+0	1A3	2FC	49F
+0	551	A5C	FAD
+0	D6D	F33	FFF
+0	0A8	C50	CF8
+0	916	DE9	FFF
+0	D7B	38A	FFF
+0	A10	8A8	FFF
+0	F96	9F9	FFF
+0	6F0	0ED	7DD
+0	5E5	E82	FFF
+0	D34	564	FFF
+1	893	BA1	800
+1	AF1	EB7	9A8
+1	A04	C54	800
+1	84E	A98	800
+1	967	8E9	800
+1	AF7	CE5	800
+1	92D	C4B	800
+1	ACF	BCB	800
+1	BD6	C76	84C
+1	BE0	D8B	96B
+1	A97	864	800
+1	AA9	E2F	8D8
+1	A03	E78	87B
+1	9EC	B94	800
+1	92A	CCB	800
+1	50B	6D3	7FF
+1	5AF	405	7FF
+1	747	4A5	7FF
+1	656	02D	683
+1	568	2EA	7FF
+1	654	2CC	7FF
+1	400	301	701
+1	589	2A5	7FF
+1	426	0DF	505
+1	436	53A	7FF
+1	79F	5CC	7FF
+1	691	1CE	7FF
+1	6A8	144	7EC
+1	65B	010	66B
+1	4F5	6C6	7FF
+1	E1C	134	F50
+1	8F8	7EF	0E7
+1	DFE	17A	F78
+1	90F	318	C27
+1	B8B	7D3	35E
+1	EE8	6DC	5C4
+1	D20	7E0	500
+1	B7A	24F	DC9
+1	C9F	5B9	258
+1	995	36F	D04
+1	CC3	40C	0CF
+1	812	107	919
+1	9FB	194	B8F
+1	817	6EB	F02
+1	AC4	40E	ED2
+
+
+
+
+
+
+
+
