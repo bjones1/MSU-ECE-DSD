@@ -1,5 +1,5 @@
-// <p><code>max3sint16b.v</code> - Output the maximum of three signed,
-//     16-bit inputs.</p>
+// <h1><code>max3sint16b.v</code> - Output the maximum of three signed,
+//     16-bit inputs</h1>
 // <p>This implements the following schematic:</p>
 // <p><img src="max3.png"></p>
 module max3sint16b(a, b, c, y);

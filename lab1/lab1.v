@@ -6,7 +6,7 @@
 //     then be programmed on the FPGA. Therefore, make sure you
 //     understand what hardware lies behind each line of "code". In
 //     contrast, the simulation source file <code><a
-//             href="tb_lab1.v.html">tb_lab1.v</a></code> will not by
+//             href="tb_lab1.v">tb_lab1.v</a></code> will not by
 //     synthesized, and can contain code that's not synthesizable.</p>
 
 // <p>A Verilog <a
@@ -16,7 +16,7 @@
 //     which consist of inputs and/or outputs, allow the module to
 //     connect to external devices. The top-level module in a Xilinx
 //     design connects directly to pins on the FPGA; the <code><a
-//             href="Basys3_Master.xdc.html">Basys3_Master.xdc</a></code>&nbsp;file
+//             href="Basys3_Master.xdc">Basys3_Master.xdc</a></code>&nbsp;file
 //     maps these names (<code>LED</code> and <code>SW</code>) to
 //     physical pins on the FPGA.&nbsp;</p>
 module lab1(
@@ -33,9 +33,7 @@ module lab1(
     //     the first 8 switches to the first 8 LEDs. SW0 is the right-most
     //     switch on the Basys 3 board; the order is right to left. The
     //     equivalent schematic is:</p>
-    // <p><img
-    //         src="lab1_assign_schematic.png">
-    // </p>
+    // <p><img src="lab1_assign_schematic.png"></p>
     assign LED = SW;
 
 // <p>Every module must contain this statement.</p>

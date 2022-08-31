@@ -1,10 +1,9 @@
 // <h1>tb_lab1.v - Test bench for the <code><a
-//             href="lab1.v.html">lab1.v</a></code> module</h1>
+//             href="lab1.v">lab1.v</a></code> module</h1>
 // <p>This file provides a series of tests (called a test bench) to
-//     verify that the <code><a href="lab1.v.html">lab1.v</a></code>
-//     module works correctly. Because this file will not be synthesized,
-//     it can contain any code, including code that cannot be
-//     synthesized.</p>
+//     verify that the <code><a href="lab1.v">lab1.v</a></code> module
+//     works correctly. Because this file will not be synthesized, it can
+//     contain any code, including code that cannot be synthesized.</p>
 // <p>The timescale <a
 //         href="https://www.chipverify.com/verilog/verilog-timescale">compiler
 //         directive</a> specifies the time unit and precision for one
@@ -13,7 +12,7 @@
 //     delay of 100 ns.</p>
 `timescale 1ns / 1ps
 
-// <p>In contrast to <code><a href="lab1.v.html">lab1.v</a></code>, this
+// <p>In contrast to <code><a href="lab1.v">lab1.v</a></code>, this
 //     module contains no inputs or outputs; therefore, the ports are
 //     omitted.</p>
 module tb_leds;

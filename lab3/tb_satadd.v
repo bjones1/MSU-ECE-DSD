@@ -49,7 +49,8 @@ module tb_satadd;
             a = i_a;
             b = i_b;
             mode = i_mode;
-            #100   //delay
+            // <p>Wait the outputs to propagate before testing them.</p>
+            #100
             if (i_result == y) begin
                 $display("%d(%t): PASS, mode: %x, a: %x, b: %x, y: %x %s\n", count, $time, mode, a, b, y, comment);
             end else begin

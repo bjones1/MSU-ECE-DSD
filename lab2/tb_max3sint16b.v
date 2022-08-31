@@ -1,5 +1,5 @@
 // <h1><code>tb_max3sint16b.v</code> - test bench for <a
-//         href="max3sint16b.v.html">max3sint16b.v</a></h1>
+//         href="max3sint16b.v">max3sint16b.v</a></h1>
 // <p>Set the time scale for simulation to 1 ns.</p>
 `timescale 1ns / 1ps
 
