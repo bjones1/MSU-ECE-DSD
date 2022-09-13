@@ -17,7 +17,10 @@ module adder_datapath(
 `define SIMPLE
 `ifdef SIMPLE
     // <p>The obvious approach to create an adder: just add everything
-    //     together. Simulating this on the implemented design shows the
+    //     together.
+    assign y = a + b + c;
+
+    // <p>Simulating this on the implemented design shows the
     //     worst-case delay:</p>
     // <figure class="image"><img src="adder-datapath-simple-sim.png" alt=""
     //         width="938" height="213">
@@ -36,7 +39,6 @@ module adder_datapath(
     // <p>Note that the timing analysis shows a longer delay than the
     //     simulation &ndash; the simulation didn't happen to select
     //     worst-case inputs (such as a carry of every bit).</p>
-    assign y = a + b + c;
 `endif
 
 // <h2>Register-based solution</h2>
@@ -70,7 +72,7 @@ module adder_datapath(
     always @(posedge clk) begin
         y <= sum;
     end
-    
+
     // <p>This produces much better results:</p>
     // <figure class="image"><img src="adder-datapath-registers-timing.png"
     //         alt="" width="709" height="191">
