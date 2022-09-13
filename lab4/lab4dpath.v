@@ -38,4 +38,22 @@ module lab4dpath(
 	output [9:0] y
 );
 
+// <h2>Implementation Hints</h2>
+// <ul>
+//     <li>You may only use assignment statements or component
+//         instantiations, you may not use an always block (sequential
+//         statements).</li>
+//     <li>You will need to expand the input values by adding two LSbs
+//         with values of zero. This can be done using concatenation as
+//         follows:</li>
+// </ul>
+wire v1[11:0];
+assign v1 = {x1, 2'b00};   
+// <p>When you have to drop bits, just choose which bits you want to keep
+//     by the bus indices. For example, the following statement drops the
+//     two LSbs of <code>s2</code> to form <code>y</code>.</p>
+assign y = s2[11:2];
+// <p>You may remove or edit these lines of code &ndash; they are only
+//     hints.</p>
+
 endmodule
