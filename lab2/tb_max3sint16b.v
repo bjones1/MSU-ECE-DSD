@@ -85,7 +85,7 @@ module tb_max3sint16b;
             #50
 
             // <p>Check that the actual result matches the expected result.</p>
-            if (i_result == y) begin
+            if (i_result === y) begin
                 // <p>The <code>$time</code> system function (see <a
                 //         href="verilog_standard_1364-2005.pdf#page=339">Section
                 //         17.7.1</a>) returns the time, in units of the current
@@ -99,7 +99,7 @@ module tb_max3sint16b;
 
         end
 
-        if (errors == 0) begin
+        if (errors === 0) begin
             $display("PASS: All vectors passed.\n");
         end else begin
             $display ("FAIL: %d vectors failed\n",errors);

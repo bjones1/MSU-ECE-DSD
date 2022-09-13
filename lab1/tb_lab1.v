@@ -81,19 +81,19 @@ module tb_leds;
         //     <code>++i</code> is invalid. Likewise, it doesn't allow inplace
         //     addition, making <code>i += 1</code> invalid as well. Instead, use
         //     <code>i = i + 1</code>.</p>
-        for (i = 0; i != 256; i = i + 1) begin
+        for (i = 0; i !== 256; i = i + 1) begin
             // <p>Assign i to the switch input.</p>
             sw = i;
             // <p>Delay, to allow for propoagation time.</p>
             #50;
             // <p>Check that the output matches the input.</p>
-            if (led != i) begin
+            if (led !== i) begin
                 errors = errors + 1;
             end
         end
 
         // <p>Error check after the loop completes.</p>
-        if (errors == 0) begin
+        if (errors === 0) begin
             $display("PASS: All test vectors passed\n");
         end else begin
             $display("FAIL: %d errors occurred\n", errors);

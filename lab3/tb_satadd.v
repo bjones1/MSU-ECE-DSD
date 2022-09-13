@@ -51,7 +51,7 @@ module tb_satadd;
             mode = i_mode;
             // <p>Wait the outputs to propagate before testing them.</p>
             #100
-            if (i_result == y) begin
+            if (i_result === y) begin
                 $display("%d(%t): PASS, mode: %x, a: %x, b: %x, y: %x %s\n", count, $time, mode, a, b, y, comment);
             end else begin
                 $display("%d(%t): FAIL, mode: %x, a: %x, b: %x, y (actual): %x, y (expected): %x %s\n", count, $time, mode, a, b, y, i_result, comment);
@@ -60,7 +60,7 @@ module tb_satadd;
             count = count + 1;
         end
 
-        if (errors == 0) begin
+        if (errors === 0) begin
             $display("PASS: All vectors passed.\n");
         end else begin
             $display ("FAIL: %d vectors failed\n",errors);

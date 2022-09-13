@@ -57,7 +57,7 @@ module tb_lab4dpath;
             x3 = i_c;
             // Delay for progagation of signals.
             #40
-            if (i_result == y) begin
+            if (i_result === y) begin
                 $display("%d(%t):PASS, x1: %x, x2: %x, x3: %x, y: %x\n",count, $time, x1, x2, x3, y);
             end else begin
                 $display("%d(%t):FAIL, x1: %x, x2: %x, x3: %x, y (actual): %x, y (expected): %x\n",count, $time, x1, x2, x3, y, i_result);
@@ -65,7 +65,7 @@ module tb_lab4dpath;
             end
 		end
 
-		if (errors == 0) begin
+		if (errors === 0) begin
             $display("PASS: All vectors passed.\n");
         end else begin
             $display("FAIL: %d vectors failed\n", errors);
