@@ -1,5 +1,6 @@
-// <h1>tb_in-class.v - Test bench for the <code><a
-//             href="in-class.v">in-class.v</a></code> module</h1>
+// <h1>tb_adder-datapath.v - Test bench for the <code><a
+//             href="adder-datapath.v">adder-datapath.v</a></code> module
+// </h1>
 `timescale 1ns / 1ps
 
 module tb_adder_datapath;
@@ -35,7 +36,7 @@ module tb_adder_datapath;
         .y(y)
     );
     
-    // Create a 20 ns clock.
+    // <p>Create a 20 ns clock.</p>
     initial begin
         clk = 0;
         forever begin
@@ -44,7 +45,7 @@ module tb_adder_datapath;
         end
     end
 
-    // Main testbench code.
+    // <p>Main testbench code.</p>
     initial begin
         // <p>Define the inital value for all inputs.</p>
         clk = 0;
@@ -60,11 +61,11 @@ module tb_adder_datapath;
         i = 0;
         errors = 0;
         
-        // Apply a stimulus vector
+        // <p>Apply a stimulus vector</p>
         a = 12'h654;
         b = 12'h456;
         c = 12'h555;
-        // Wait for the values to propagate.
+        // <p>Wait for the values to propagate.</p>
         #100
 
         // <p>Error check after the loop completes.</p>
