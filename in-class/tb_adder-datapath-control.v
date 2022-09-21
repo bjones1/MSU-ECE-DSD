@@ -1,5 +1,6 @@
-// <h1>tb_in-class.v - Test bench for the <code><a
-//             href="in-class.v">in-class.v</a></code> module</h1>
+// <h1>tb_adder-datapath-control.v - Test bench for the <code><a
+//             href="adder-datapath-control.v">adder-datapath-control.v</a></code>
+//     module</h1>
 `timescale 1ns / 1ps
 
 module tb_adder_datapath_control;
@@ -36,8 +37,8 @@ module tb_adder_datapath_control;
         .dout(dout),
         .ordy(ordy)
     );
-    
-    // Create a 20 ns clock.
+
+    // <p>Create a 20 ns clock.</p>
     initial begin
         clk = 0;
         forever begin
@@ -46,7 +47,7 @@ module tb_adder_datapath_control;
         end
     end
 
-    // Main testbench code.
+    // <p>Main testbench code.</p>
     initial begin
         // <p>Define the inital value for all inputs.</p>
         clk = 0;
@@ -56,21 +57,26 @@ module tb_adder_datapath_control;
 
         // <p><a id="delay-100"></a>Wait 100 ns for global reset to finish.</p>
         #100;
-        
+
 
         $display("Applying vectors...\n");
         i = 0;
         errors = 0;
-        
-        // Apply a stimulus vector
+
+        // <p>Apply a stimulus vector</p>
         reset = 0;
         din = 16'h0001;
         irdy = 1;
-        // Wait for the values to propagate.
+
+        // <p>Wait 1 clock cycle for the values to propagate.</p>
         #20
-        
-        // Apply more values.
+
+        // <p>Apply more values.</p>
         din = 16'h0002;
+        irdy = 0;
+
+        #20
+        din = 16'h0003;
         irdy = 0;
 
         // <p>Error check after the loop completes.</p>

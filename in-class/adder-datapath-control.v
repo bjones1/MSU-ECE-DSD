@@ -83,6 +83,7 @@ module adder_datapath_control(
     always @* begin
         case (pstate)
             `STATE_INPUT_WAIT: begin
+                nstate = irdy ? `STATE_SUM1 : `STATE_INPUT_WAIT;
                 set_ordy = 0;
                 clr_ordy = irdy;
                 ldA = irdy;
@@ -90,6 +91,7 @@ module adder_datapath_control(
             end
 
             `STATE_SUM1: begin
+                nstate = `STATE_SUM2;
                 set_ordy = 0;
                 clr_ordy = 0;
                 ldA = 1;
@@ -97,6 +99,7 @@ module adder_datapath_control(
             end
 
             `STATE_SUM2: begin
+                nstate = `STATE_INPUT_WAIT;
                 set_ordy = 1;
                 clr_ordy = 0;
                 ldA = 1;
