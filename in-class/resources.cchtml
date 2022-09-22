@@ -1,0 +1,38 @@
+<h1>Resources</h1>
+<h2>General</h2>
+<ul>
+    <li><a
+            href="https://docs.google.com/document/d/1SVzBwgtMYdtuKy_2vAuaHrh8ZpcsFOyX7Fp7ipfZoR0/edit?usp=sharing">Course
+            syllabus</a></li>
+    <li>Digilent's <a
+            href="https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/">Basys
+            3 board</a> and its <a
+            href="https://digilent.com/reference/programmable-logic/basys-3/start">reference
+            manual</a></li>
+    <li><a
+            href="https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Verilog-Language-Support">Vivado
+            Design Suite User Guide: Synthesis - Verilog Language Support</a>
+    </li>
+</ul>
+<h2>Xilinx</h2>
+<p>The Basys 3 board contains an <a
+        href="https://www.xilinx.com/products/silicon-devices/fpga/artix-7.html">Artix-7&trade;</a>
+    FPGA (Xilinx part number <a
+        href="https://docs.xilinx.com/v/u/en-US/ds181_Artix_7_Data_Sheet">
+        XC7A35T-1CPG236C</a>). This is a member of Xilinx's 7 series, so
+    documentation on either the 7 series or on the Artix applies. Start with the
+    <a href="https://docs.xilinx.com/v/u/en-US/ds180_7Series_Overview">7 Series
+        FPGAs Overview</a>. Configurable Logic Blocks are the basic building
+    block of FPGAs. Read the <a
+        href="http://www.xilinx.com/support/documentation/user_guides/ug474_7Series_CLB.pdf">7
+        Series FPGAs Configurable Logic Block User Guide</a> for the essentials
+    of how the 7 series CLBs work. Next, the DSP slices contain multipliers,
+    adders, and other commonly-used hardware; see the <a
+        href="http://www.xilinx.com/support/documentation/user_guides/ug479_7Series_DSP48E1.pdf">7
+        Series FPGAs DSP48E1 Slice User Guide</a>. These FPGAs also contain RAM;
+    see the <a
+        href="http://www.xilinx.com/support/documentation/user_guides/ug473_7Series_Memory_Resources.pdf">7
+        Series FPGAs Memory Resources User Guide</a>. For more links, see the
+    references on the last page of the <a
+        href="https://www.xilinx.com/content/dam/xilinx/support/documents/selection-guides/7-series-product-selection-guide.pdf#page=12">7
+        Series Product Tables and Product Selection Guide</a>.</p>
