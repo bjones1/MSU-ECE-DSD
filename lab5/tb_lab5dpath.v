@@ -1,6 +1,9 @@
 // <h1><a href="lab5dpath.v">Lab 5</a> testbench</h1>
 `timescale 1ns / 1ps
 
+// <p>The number of clock cycles required by the <code>lab5dpath</code> module to produce a result. Modify this based on the pipelining of your design.</p>
+`define LATENCY (2)
+
 module tb_lab5dpath;
 
     // <p>Inputs</p>
@@ -40,10 +43,10 @@ module tb_lab5dpath;
         x2 = 0;
         x3 = 0;
 
-        fd = $fopen("../../../../multadd_vectors.txt","r");
+        fd = $fopen("../../../../multadd_vectors.txt", "r");
         if (fd === 0) begin
           // <p>for post-route simulation, one directory deeper</p>
-          fd = $fopen("../../../../../multadd_vectors.txt","r");
+          fd = $fopen("../../../../../multadd_vectors.txt", "r");
         end
 
         if (fd === 0) begin
@@ -77,9 +80,11 @@ module tb_lab5dpath;
     // <p>Wait enough clocks for the pipelined multiply/add process to
     //     produce a result.</p>
     task pipeline_wait;
+        integer i;
         begin
-            @(negedge clk);
-            @(negedge clk);
+            for (i = 0; i < `LATENCY; i = i + 1) begin
+                @(negedge clk);
+            end
         end
     endtask
 
