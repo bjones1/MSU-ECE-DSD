@@ -9,10 +9,6 @@
             3 board</a> and its <a
             href="https://digilent.com/reference/programmable-logic/basys-3/start">reference
             manual</a></li>
-    <li><a
-            href="https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Verilog-Language-Support">Vivado
-            Design Suite User Guide: Synthesis - Verilog Language Support</a>
-    </li>
 </ul>
 <h2>Xilinx</h2>
 <p>The Basys 3 board contains an <a
@@ -36,3 +32,15 @@
     references on the last page of the <a
         href="https://www.xilinx.com/content/dam/xilinx/support/documents/selection-guides/7-series-product-selection-guide.pdf#page=12">7
         Series Product Tables and Product Selection Guide</a>.</p>
+<h2>Verilog</h2>
+<ul>
+    <li><a
+            href="https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Verilog-Language-Support">Vivado
+            Design Suite User Guide: Synthesis - Verilog Language Support</a>
+    </li>
+    <li>See <a
+            href="https://support.xilinx.com/s/article/1207129?language=en_US">Flop
+            Inferrence in Verilog Synthesis</a> for Xilinx's rules on creating
+        flip-flops in Verilog. Briefly: for an async set/reset, use <code>always
+            @(posedge clk or posedge aset_or_clr)</code>.</li>
+</ul>
