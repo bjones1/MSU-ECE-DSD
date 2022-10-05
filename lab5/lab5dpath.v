@@ -33,10 +33,10 @@
 // </table>
 module lab5dpath(
     input clk,
-	input [9:0] x1,
-	input [9:0] x2,
-	input [9:0] x3,
-	output [9:0] y
+	input signed [9:0] x1,
+	input signed [9:0] x2,
+	input signed [9:0] x3,
+	output signed [9:0] y
 );
 
 endmodule

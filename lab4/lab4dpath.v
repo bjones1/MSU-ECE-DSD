@@ -32,10 +32,10 @@
 //     </tbody>
 // </table>
 module lab4dpath(
-	input [9:0] x1,
-	input [9:0] x2,
-	input [9:0] x3,
-	output [9:0] y
+	input signed [9:0] x1,
+	input signed [9:0] x2,
+	input signed [9:0] x3,
+	output signed [9:0] y
 );
 
     // <h2>Implementation Hints</h2>
@@ -47,7 +47,7 @@ module lab4dpath(
     //         with values of zero. This can be done using concatenation as
     //         follows:</li>
     // </ul>
-    wire [11:0] v1;
+    wire signed [11:0] v1;
     assign v1 = {x1, 2'b00};
     // <p>When you have to drop bits, just choose which bits you want to keep
     //     by the bus indices. For example, the following statement drops the
