@@ -1,5 +1,5 @@
-// <h1>tb_adder-datapath.v - Test bench for the <code><a
-//             href="adder-datapath.v">adder-datapath.v</a></code> module
+// <h1>tb_memory.v - Test bench for the <code><a
+//             href="memory.v">memory.v</a></code> module
 // </h1>
 `timescale 1ns / 1ps
 
@@ -16,7 +16,7 @@ module tb_adder_datapath;
     integer i;
     integer errors = 0;
 
-    timer basys_memory (
+    basys_memory uut(
         .SW(SW),
         .BTN(BTN),
         .CLK(clk),
@@ -48,6 +48,21 @@ module tb_adder_datapath;
         // <p>Apply a stimulus vector</p>
         // <p>Wait for the values to propagate.</p>
         
+        // Do a write (up button pressed).
+        SW = 16'h5555;
+        BTN = 5'b00001;
+        @(negedge clk);
+        @(negedge clk);
+        @(negedge clk);
+
+        // Dp a read (left button pressed)
+        BTN = 5'b00010;
+        @(negedge clk);
+        @(negedge clk);
+        @(negedge clk);
+        if (LED !== 16'h5555) begin
+            errors = errors + 1;
+        end
 
         // <p>Error check after the loop completes.</p>
         if (errors == 0) begin

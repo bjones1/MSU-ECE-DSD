@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_adder_datapath_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_adder_datapath" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="200.001 ns"></ZoomEndTime>
+      <Cursor1Time time="200.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="218"></NameColumnWidth>
+      <ValueColumnWidth column_width="101"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/tb_adder_datapath/SW" type="array">
+      <obj_property name="ElementShortName">SW[15:0]</obj_property>
+      <obj_property name="ObjectShortName">SW[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/BTN" type="array">
+      <obj_property name="ElementShortName">BTN[4:0]</obj_property>
+      <obj_property name="ObjectShortName">BTN[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/LED" type="array">
+      <obj_property name="ElementShortName">LED[15:0]</obj_property>
+      <obj_property name="ObjectShortName">LED[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/errors" type="array">
+      <obj_property name="ElementShortName">errors[31:0]</obj_property>
+      <obj_property name="ObjectShortName">errors[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/waddr" type="array">
+      <obj_property name="ElementShortName">waddr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/raddr" type="array">
+      <obj_property name="ElementShortName">raddr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/bp1/button" type="logic">
+      <obj_property name="ElementShortName">button</obj_property>
+      <obj_property name="ObjectShortName">button</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/bp1/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/bp1/pressed" type="logic">
+      <obj_property name="ElementShortName">pressed</obj_property>
+      <obj_property name="ObjectShortName">pressed</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/bp1/sync_button" type="logic">
+      <obj_property name="ElementShortName">sync_button</obj_property>
+      <obj_property name="ObjectShortName">sync_button</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_adder_datapath/uut/bp1/button_state" type="logic">
+      <obj_property name="ElementShortName">button_state</obj_property>
+      <obj_property name="ObjectShortName">button_state</obj_property>
+   </wvobject>
+</wave_config>
