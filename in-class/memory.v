@@ -7,7 +7,7 @@
 `define BTNR (BTN[2])
 `define BTND (BTN[3])
 
-// A module to debounce a pushbutton, emitting a single pulse on each button press.
+// This module asserts pressed for one cycle each time button is pressed. It does not debounce button.
 module button_pulse(
     input button,
     input clk,
@@ -30,11 +30,11 @@ module button_pulse(
 endmodule
 
 
-// A module to increment or decrement a memory address, based on up and down buttons.
+// A module to increment or decrement a memory address, based on the pushbuttons.
 module mem_addr(
-    // The button which increments the current address. It's not required to be syncronized clock.
+    // The button which increments the current address. It's not required to be syncronized to the clock.
     input inc_button,
-    // The button which decrements the current address. It's not required to be syncronized clock.
+    // The button which decrements the current address. It's not required to be syncronized to the clock.
     input dec_button,
     input clk,
     // Synchronous reset. This sets the address back to 0.
@@ -44,7 +44,7 @@ module mem_addr(
     // Asserted when the address increments or decrements.
     output delta
 );
-    // Debounce the inc and dec buttons.
+    // Process the inc and dec buttons.
     wire addr_inc, addr_dec;
     button_pulse bp0(inc_button, clk, addr_inc);
     button_pulse bp1(dec_button, clk, addr_dec);
@@ -104,7 +104,7 @@ module basys_memory(
         
         // Read port.
         .clkb(CLK),
-        .enb(1),
+        .enb(do_read | do_write),
         .addrb(raddr),
         .doutb(LED)
     );
