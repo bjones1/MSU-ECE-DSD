@@ -1,7 +1,10 @@
 # <h1><code>.gitignore</code></h1>
+# <p>See <a href="https://docs.xilinx.com/r/en-US/ug892-vivado-design-flows-overview/Revision-Control-Philosophy-from-2020.2-Onwards">Revision Control Philosophy from 2020.2 Onwards</a></p>
 .Xil
 *.cache
+*.gen
 *.hw
+*.ip_user_files
 *.runs
 *.sim
 *.jou
