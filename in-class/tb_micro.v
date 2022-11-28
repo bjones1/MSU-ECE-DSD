@@ -5,9 +5,11 @@
 
 module tb_micro;
     // <p>Inputs to UUT</p>
-    reg clk;
+    reg clk, reset;
     // <p>Outputs from UUT</p>
-    wire [7:0] pc, w;
+    wire [12:0] inst;
+    wire [7:0] pc, w, a, b, d;
+    wire is_zero;
 
     // <p>An <code>integer</code> is essentially a 32-bit register. It's a
     //     convenient way to declare and use 32-bit values.</p>
@@ -16,8 +18,14 @@ module tb_micro;
 
     micro uut (
         .clk(clk),
+        .reset(reset),
         .w(w),
-        .pc(pc)
+        .pc(pc),
+        .inst(inst),
+        .is_zero(is_zero),
+        .a(a),
+        .b(b),
+        .d(d)
     );
     
     // <p>Create a 20 ns clock.</p>
@@ -32,13 +40,16 @@ module tb_micro;
     // <p>Main testbench code.</p>
     initial begin
         // <p><a id="delay-100"></a>Wait 100 ns for global reset to finish.</p>
+        reset = 1;
         #100;
+        reset = 0;
 
         $display("Applying vectors...\n");
         i = 0;
         errors = 0;
         
         @(negedge clk);
+        #1000;
         
         // <p>Error check after the loop completes.</p>
         if (errors == 0) begin
@@ -46,6 +57,7 @@ module tb_micro;
         end else begin
             $display("FAIL: %d errors occurred\n", errors);
         end
+        $finish;
     end
 
 endmodule
