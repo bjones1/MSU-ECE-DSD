@@ -10,7 +10,7 @@ the board mapping step in this lab. There is no report required.
 ## Procedure
 
 1.  Ensure that you have the Vivado software installed; follow the
-    [provided directions](vivado_installation.pdf).
+    [provided directions](vivado_install.md).
 2.  Clone or download the lab 1 files from the Lab 1 folder in the class GitHub
     repository and unpack it in top-level directory on your C: drive, such as
     C:\\ece4743\\lab1.

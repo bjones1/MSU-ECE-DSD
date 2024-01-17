@@ -6,13 +6,13 @@ as Xilinx is picky about accepting non-institutional addresses.
 
 ## Procedure
 
-1.  Go to [Vivado](http://www.xilinx.com/support/download.html)
-    Website:(http://www.xilinx.com/support/download.html)
+1.  Go to the [Vivado](http://www.xilinx.com/support/download.html) Website:
+    (http://www.xilinx.com/support/download.html)
 2.  Select Vivado 2023.2
 3.  Download the Vivado HLx 2023.2: Windows Web Installer and execute it. The
     link is shown below.
 
-![alt text](../../lab1/website_download_medium.png)
+    ![alt text](website_download_medium.png)
 
 4.  A login prompt will open and then you should login with your account created
     with your school email. Enter your information and the following
@@ -25,32 +25,34 @@ as Xilinx is picky about accepting non-institutional addresses.
     occurs.
 6.  Click next on the first screen shown below.
 
-![alt text](../../lab1/first_page_exe.png)
+    ![alt text](first_page_exe.png)
 
 7.  Login with you account and keep the first option marked as shown below, then
     click next.
 
-![alt text](../../lab1/login_page_exe.png)
+    ![alt text](login_page_exe.png)
 
 8.  Select the Vivado Option, then click next.
 
-![alt text](../../lab1/vivado_select_exe.png)
+    ![alt text](vivado_select_exe.png)
 
 9.  Select the Vivado ML Standard Option, then click next.
 
-![alt text](../../lab1/ml_standard_exe.png)
+    ![alt text](ml_standard_exe.png)
 
 10. Select the options shown below, then click next. If you do not match these
     options then your software may not have the correct support for the Baysys 3
     board and you may install more software than needed taking up unnecessary
     space.
 
-![alt text](../../lab1/options_exe.png)
 
-11. Agree by clicking the two checkboxes labeled "I Agree" then hit next. 
+    ![alt text](options_exe.png)
+
+11. Agree by clicking the two checkboxes labeled "I Agree" then hit next.
 
 12. Keep the default settings shown below and hit next.
 
-![alt text](../../lab1/default_location_exe.png)
+
+    ![alt text](default_location_exe.png)
 
 13. Click Install.
