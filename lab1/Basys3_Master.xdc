@@ -1,7 +1,9 @@
-## This file is a general .xdc for the Basys3 rev B board
-## To use it in a project:
-## - uncomment the lines corresponding to used pins
-## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
+# # `Basys3_Master.xdc` - A Xilinx Design Constraints (.xdc) file for the Digilent Basys-3 board
+# This file is a general .xdc for the Basys3 rev B board.
+# To use it in a project:
+
+# - uncomment the lines corresponding to used pins
+# - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
 # Clock signal
 #Bank = 34, Pin name = ,					Sch name = CLK100MHZ
@@ -348,14 +350,4 @@ set_property BITSTREAM.CONFIG.CONFIGRATE 33 [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property CFGBVS VCCO [current_design]
 
-
-
-
-
-
-
-
-
-
-
-
+# CodeChat Editor lexer: python. See TODO.
