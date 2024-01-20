@@ -11,14 +11,13 @@ the board mapping step in this lab. There is no report required.
 
 1.  Ensure that you have the Vivado software installed; follow the
     [provided directions](vivado_install.md).
-2.  Clone or download the lab 1 files from the Lab 1 folder in the class GitHub
-    repository and unpack it in top-level directory on your C: drive, such as
-    C:\\ece4743\\lab1.
-3.  Follow the steps in [this YouTube video](https://youtu.be/8eK8Bqg6_Zs) to
+2.  Follow the steps in [this YouTube video](https://youtu.be/8eK8Bqg6_Zs) to
     simulate this design in Vivado and download it to the Basys 3 board. This
-    video was made with
-4.  Vivado 2015.2; the look of the current tool version has changed somewhat
+    video was made with Vivado 2015.2; the look of the current tool version has
+    changed somewhat since that time. However, you should still be able to use
+    this video to implement this lab.
+3.  Vivado 2015.2; the look of the current tool version has changed somewhat
     since that time. However, you should still be able to use this video to
     implement this lab.
-5.  Demo your simulation step and completed design operating on the Basys 3
+4.  Demo your simulation step and completed design operating on the Basys 3
     board to the TA.
