@@ -4,7 +4,13 @@
 
 ## In-class exercises
 
-Coming soon!
+- [in-class.v](in-class/in-class.v) - skeleton code for in-class exercises
+- [adder-datapath.v](in-class/adder-datapath.v) - An in-class exercise on
+  datapaths
+- [adder-datapath-control.v](in-class/adder-datapath-control.v) - An in-class
+  exercise on datapaths with control
+- [memory.v](in-class/memory.v) - An in-class exercise on memory
+- [micro.v](in-class/micro.v) - An in-class exercise on a small microcontroller
 
 ## Labs
 

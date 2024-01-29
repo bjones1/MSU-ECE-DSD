@@ -1,4 +1,4 @@
-// <h1><code>in-class.v</code> - skeleton code for in-class exercises</h1>
+// # `in-class.v` - skeleton code for in-class exercises
 module in_class(
     input a,
     input b,

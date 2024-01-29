@@ -1,4 +1,4 @@
-// <h1>An in-class exercise on a small microcontroller</h1>
+// # An in-class exercise on a small microcontroller
 //
 // This microcontroller supports four opcode.
 `define OP_LOAD (2'b00)
@@ -25,7 +25,8 @@ module micro(
             // Begin executing at memory location 0 after reset.
             pc <= 0;
         end else begin
-            // If the current instruction doesn't load a new address in the pc, then move to the next instruction.
+            // If the current instruction doesn't load a new address in the pc,
+            // then move to the next instruction.
             pc <= pc_ld ? d : pc + 1;
         end
     end
@@ -39,44 +40,36 @@ module micro(
     // Instantiate program memory.
     always @* begin
         case (pc)
-            // ; if (a == b) {
-            // 00: load a, w  ; Address is a (memory location 0)
-            //                op pc/w cond m/l addr/lit
+            // ; if (a == b) { 00: load a, w ; Address is a (memory location 0)
+            // op pc/w cond m/l addr/lit
             8'd00: inst = 13'b00____0____0___1_00000000;
-            // 01: sub b, w      ; Address is b (memory location 1).
+            // 01: sub b, w ; Address is b (memory location 1).
             8'd01: inst = 13'b11____0____0___1_00000001; 
-            // 02: load if Z, if_body, pc  ; Literal is if_body (instruction 04) 
+            // 02: load if Z, if_body, pc ; Literal is if_body (instruction 04)
             8'd02: inst = 13'b00____1____1___0_00000100; 
-            // 03: load else_body, pc  ; Literal is else_body (instruction 08)
+            // 03: load else_body, pc ; Literal is else_body (instruction 08)
             8'd03: inst = 13'b00____1____0___0_00001000; 
-            //   ; ++a;
-            //   if_body:
-            //   04: load a, w   ; Address is a (memory location 0)
+            // ; ++a; if_body: 04: load a, w ; Address is a (memory location 0)
             8'd04: inst = 13'b00____0____0___1_00000000;
-            //   05: add #1, w   ; Literal is 1. 
+            // 05: add #1, w ; Literal is 1.
             8'd05: inst = 13'b10____0____0___0_00000001;
-            //   06: store w, a  ; Address is a (memory location 0)
+            // 06: store w, a ; Address is a (memory location 0)
             8'd06: inst = 13'b01____0____0___1_00000000;
-            //   07: load if_end, pc  ; Literal is if_end (instruction 11)
+            // 07: load if_end, pc ; Literal is if_end (instruction 11)
             8'd07: inst = 13'b00____1____0___0_00001011;
-            // ; } else {
-            //   ; ++b;
-            //   else_body:
-            //   08: load #1, w  ; Literal is 1.
+            // ; } else { ; ++b; else_body: 08: load #1, w ; Literal is 1.
             8'd08: inst = 13'b00____0____0___0_00000001;
-            //   09: sub b, w    ; Address is b (memory location 1).
+            // 09: sub b, w ; Address is b (memory location 1).
             8'd09: inst = 13'b11____0____0___1_00000001;
-            //   10: store w, b  ; Address is b (memory location 1).
+            // 10: store w, b ; Address is b (memory location 1).
             8'd10: inst = 13'b01____0____0___1_00000001;
-            // ; }
-            // if_end:
-            // ; Load a and b into W to show their final values.
-            // 11: load a, w     ; Address is a (memory location 0)
+            // ; } if_end: ; Load a and b into W to show their final values. 11:
+            // load a, w ; Address is a (memory location 0)
             8'd11: inst = 13'b00____0____0___1_00000000;
-            // 12: load b, w     ; Address is b (memory location 1)
+            // 12: load b, w ; Address is b (memory location 1)
             8'd12: inst = 13'b00____0____0___1_00000001;
-            // loop_forever: goto loop_forever;
-            // 13: load pc, loop_forever  ; Literal is loop_forever (instruction 13).
+            // loop_forever: goto loop_forever; 13: load pc, loop_forever ;
+            // Literal is loop_forever (instruction 13).
             8'd13: inst = 13'b00____1____0___0_00001101;
             // For any other address, return a junk instruction.
             default: inst = 13'b0;
@@ -110,10 +103,12 @@ module micro(
     // The opcode in this instruction
     wire [1:0] op;
     assign op = inst[12:11];
-    // True if the source/dest is the PC; false if the source/dest is the working register.
+    // True if the source/dest is the PC; false if the source/dest is the
+    // working register.
     wire pc_w_;
     assign pc_w_ = inst[10];
-    // True if this instruction should be executed conditionally; false if it should always be executed.
+    // True if this instruction should be executed conditionally; false if it
+    // should always be executed.
     wire cond;
     assign cond = inst[9];
     // True if the addr field is an address; false if it's a literal value.
@@ -121,10 +116,12 @@ module micro(
     // True is this is a store instruction; false otherwise.
     wire is_store;
     assign is_store = op == `OP_STORE;
-    // True if a value should be written to PC, W, or memory. This means the current instruction should be executed.
+    // True if a value should be written to PC, W, or memory. This means the
+    // current instruction should be executed.
     wire do_write;
     assign do_write = !cond | is_zero;
-    // True when one of the load signals (for PC, W, or memory) should be asserted.
+    // True when one of the load signals (for PC, W, or memory) should be
+    // asserted.
     wire do_ld = !is_store & do_write;
     // True to load the PC (program counter).
     assign pc_ld = do_ld & pc_w_;
@@ -146,7 +143,8 @@ module micro(
         endcase   
     end
     
-    // Define the is_zero bit: it's true if the last value written to PC or W was zero.
+    // Define the is_zero bit: it's true if the last value written to PC or W
+    // was zero.
     always @(posedge clk) begin
         is_zero <= do_ld ? d == 0 : is_zero;
     end
