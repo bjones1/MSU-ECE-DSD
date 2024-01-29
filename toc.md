@@ -20,6 +20,11 @@ Coming soon!
     2.  [tb_max3sint16b.v](lab2/tb_max3sint16b.v)
     3.  max3sint16b_vectors.txt
     4.  lab2_report.docx
+3.  Lab 3
+    1.  [satadd.pdf](lab3/satadd.pdf) -- instructions
+    2.  [satadd.v](lab3/satadd.v)
+    3.  [tb_satadd.v](lab3/tb_satadd.v)
+    4.  lab3_report.docx
 
 ## Misc
 
