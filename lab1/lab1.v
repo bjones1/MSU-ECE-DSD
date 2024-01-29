@@ -15,7 +15,7 @@
 // [Ports](https://www.chipverify.com/verilog/verilog-ports), which consist of
 // inputs and/or outputs, allow the module to connect to external devices. The
 // top-level module in a Xilinx design connects directly to pins on the FPGA;
-// the <code><a href="Basys3_Master.xdc">Basys3_Master.xdc</a></code> file maps
+// the <code><a href="Basys3_Master.xdc">Basys3_Master.xdc</a></code> file maps
 // these names (`LED` and `SW`) to physical pins on the FPGA.
 module lab1(
     // This defines outputs from the module: an array of 8 wires. (All ports are
