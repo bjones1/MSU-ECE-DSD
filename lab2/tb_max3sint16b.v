@@ -69,7 +69,7 @@ module tb_max3sint16b;
             //         17.2.4.3</a>) reads four signed decimal numbers (the
             //     <code>%d</code> conversion specification) then stores them in the
             //     listed variables. It returns the number of values read.</p>
-            if ($sscanf(aline, "%d %d %d %d", i_a, i_b, i_c, i_result) != 4) begin
+            if ($sscanf(aline, "%5d %5d %5d %5d", i_a, i_b, i_c, i_result) != 4) begin
                 $display("FAIL: unable to read test vectors.\n");
                 // <p>Per <a href="verilog_standard_1364-2005.pdf#page=332">Section
                 //         17.4.1</a>, this causes the simulator to stop.</p>
