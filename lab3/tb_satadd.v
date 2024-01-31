@@ -1,24 +1,23 @@
-// <h1><code>tb_satadd.v</code> - testbench for <code><a
-//             href="satadd.v">satadd.v</a></code></h1>
+// # `tb_satadd.v` - testbench for <code><a href="satadd.v">satadd.v</a></code>
 `timescale 1ns / 1ps
 
 module tb_satadd;
-    // <p>Inputs to UUT</p>
+    // Inputs to UUT
     reg [11:0] a;
     reg [11:0] b;
     reg [1:0] mode;
 
-    // <p>Outputs from UUT</p>
+    // Outputs from UUT
     wire [11:0] y;
 
-    // <p>Testbench state</p>
+    // Testbench state
     reg [8*100:1] aline, comment;
     integer fd;
     integer count, status;
     integer i_a, i_b, i_mode, i_result;
     integer errors;
 
-    // <p>Instantiate the Unit Under Test (UUT)</p>
+    // Instantiate the Unit Under Test (UUT)
     satadd uut (
         .a(a),
         .b(b),
@@ -27,29 +26,29 @@ module tb_satadd;
     );
 
     initial begin
-        // <p>Initialize Inputs</p>
+        // Initialize Inputs
         a = 0;
         b = 0;
         mode = 0;
 
         fd = $fopen("../../../../satadd_vectors.txt","r");
         if (fd == 0) begin
-            // <p>For post-route simulation, one directory deeper.</p>
+            // For post-route simulation, one directory deeper.
             fd = $fopen("../../../../../satadd_vectors.txt","r");
         end
         count = 1;
 
-        // <p>Wait 100 ns for global reset to finish</p>
+        // Wait 100 ns for global reset to finish
         #100;
 
-        // <p>Apply stimulus from test vector file.</p>
+        // Apply stimulus from test vector file.
         errors = 0;
         while ($fgets(aline,fd)) begin
             status = $sscanf(aline, "%x %x %x %x %s", i_mode, i_a, i_b, i_result, comment);
             a = i_a;
             b = i_b;
             mode = i_mode;
-            // <p>Wait the outputs to propagate before testing them.</p>
+            // Wait the outputs to propagate before testing them.
             #100
             if (i_result === y) begin
                 $display("%d(%t): PASS, mode: %x, a: %x, b: %x, y: %x %s\n", count, $time, mode, a, b, y, comment);
