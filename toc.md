@@ -27,10 +27,18 @@
     3.  max3sint16b_vectors.txt
     4.  lab2_report.docx
 3.  Lab 3
-    1.  [satadd.pdf](lab3/satadd.pdf) -- instructions
+    1.  [Instructions](lab3/satadd.pdf)
     2.  [satadd.v](lab3/satadd.v)
     3.  [tb_satadd.v](lab3/tb_satadd.v)
-    4.  lab3_report.docx
+    4.  satadd_vectors.txt
+    5.  lab3_report.docx
+4.  Lab 4
+    1.  [Instructions](lab4/multdpath.pdf)
+    2.  [lab4dpath.v](lab4/lab4dpath.v)
+    3.  [tb_lab4dpath.v](lab4/tb_lab4dpath.v)
+    4.  Basys3_Master.xdc
+    5.  multadd_vectors.txt
+    6.  lab4_report.docx
 
 ## Misc
 
