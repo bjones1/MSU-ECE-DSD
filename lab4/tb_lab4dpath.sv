@@ -3,15 +3,15 @@
 module tb_lab4dpath;
 
 	// UUT inputs
-	reg [9:0] x1;
-	reg [9:0] x2;
-	reg [9:0] x3;
+	logic [9:0] x1;
+	logic [9:0] x2;
+	logic [9:0] x3;
 
 	// UUT outputs
-	wire [9:0] y;
+	logic [9:0] y;
 
 	// Variables for testing.
-	reg[8*100:1] aline;
+	logic [8*100:1] aline;
    	integer fd;
 	integer count, status;
    	integer i_a, i_b, i_c, i_result;
@@ -70,6 +70,7 @@ module tb_lab4dpath;
         end else begin
             $display("FAIL: %d vectors failed\n", errors);
         end
+        $finish;
 
 	end
 

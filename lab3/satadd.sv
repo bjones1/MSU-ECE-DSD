@@ -1,8 +1,8 @@
 // # `satadd.v` - A Verilog module implementing lab 3, an (optionally) saturating adder.
 module satadd(
     // The [addends](https://en.wiktionary.org/wiki/addend).
-    input [11:0] a,
-    input [11:0] b,
+    input logic [11:0] a,
+    input logic [11:0] b,
     // Adder mode:
     //
     // | Mode Input     | Output function                 |
@@ -11,9 +11,9 @@ module satadd(
     // | `mode = 2'b01` | y = a + b (signed saturation)   |
     // | `mode = 2'b10` | y = a + b (normal addition)     |
     // | `mode = 2'b11` | y = a + b (normal addition)     |
-    input [1:0] mode,
+    input logic [1:0] mode,
     // The resulting sum.
-    output [11:0] y
+    output logic [11:0] y
 );
 
 // ## Implementation Guidance

@@ -20,11 +20,11 @@ module tb_leds;
     // programming languages,
     // <span style="text-decoration: underline;"><strong><code>reg</code></strong></span>isters
     // may contain a value.
-    reg [7:0] sw;
+    logic [7:0] sw;
 
     // The outputs only need to be compared to the inputs, but don't need to
     // store a value. Declare them as wires.
-    wire [7:0] led;
+    logic [7:0] led;
 
     // An `integer` is essentially a 32-bit register. It's a convenient way to
     // declare and use 32-bit values.
@@ -90,6 +90,7 @@ module tb_leds;
         end else begin
             $display("FAIL: %d errors occurred\n", errors);
         end
+        $finish;
     end
 
 endmodule

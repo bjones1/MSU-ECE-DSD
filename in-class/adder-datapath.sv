@@ -2,11 +2,11 @@
 //
 // This module demonstrates various methods for adding three numbers.
 module adder_datapath(
-    input clk,
-    input [15:0] a,
-    input [15:0] b,
-    input [15:0] c,
-    output [15:0] y
+    input logic clk,
+    input logic [15:0] a,
+    input logic [15:0] b,
+    input logic [15:0] c,
+    output logic [15:0] y
 );
 
 // ## Simple solution
@@ -42,13 +42,12 @@ module adder_datapath(
     // reducing the net delay.
     //
     // <figure class="image"><img src="adder-datapath-registers.png" width="317" height="151"><figcaption>Figure 2: An adder with registers on the input and outputs.</figcaption></figure>
-    reg [15:0] y;
-    reg [15:0] aq, bq, cq;hghg
+    logic [15:0] aq, bq, cq;
 
     // Include registers for the inputs. We don't need a reset, since this
     // inputs will (eventually) overwrite them with correct
     // values.
-    always @(posedge clk) begin
+    always_ff @(posedge clk) begin
         aq <= a;
         bq <= b;
         cq <= c;
@@ -59,7 +58,7 @@ module adder_datapath(
     assign sum = aq + bq + cq;
 
     // Then provide a register for the output.
-    always @(posedge clk) begin
+    always_ff @(posedge clk) begin
         y <= sum;
     end
 

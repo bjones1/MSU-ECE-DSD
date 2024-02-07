@@ -6,13 +6,13 @@
 module tb_max3sint16b;
 
     // Inputs
-    reg signed [15:0] a, b, c;
+    logic signed [15:0] a, b, c;
     // Outputs
-    wire signed [15:0] y;
+    logic signed [15:0] y;
 
     // A variable to hold a line of text (100 characters) read from a file. See
     // [section 3.6](../verilog_standard_1364-2005.pdf#page=42).
-    reg [8*100:1] aline;
+    logic [8*100:1] aline;
     // Store the file descriptor produced by opening a file.
     integer fd;
     // The number of tests run.

@@ -20,9 +20,9 @@
 module lab1(
     // This defines outputs from the module: an array of 8 wires. (All ports are
     // wires by default).
-    output [7:0] LED,
+    output logic [7:0] LED,
     // This defines inputs to the module, also an array of 8 wires.
-    input [7:0] SW
+    input logic [7:0] SW
 );
 
     // The [assign](https://www.chipverify.com/verilog/verilog-assign-statement)

@@ -4,9 +4,9 @@
 
 module tb_in_class;
     // <p>Inputs to UUT</p>
-    reg a, b;
+    logic a, b;
     // <p>Outputs from UUT</p>
-    wire y;
+    logic y;
 
     // <p>An <code>integer</code> is essentially a 32-bit register. It's a
     //     convenient way to declare and use 32-bit values.</p>

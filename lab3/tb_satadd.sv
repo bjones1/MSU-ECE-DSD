@@ -3,15 +3,15 @@
 
 module tb_satadd;
     // Inputs to UUT
-    reg [11:0] a;
-    reg [11:0] b;
-    reg [1:0] mode;
+    logic [11:0] a;
+    logic [11:0] b;
+    logic [1:0] mode;
 
     // Outputs from UUT
-    wire [11:0] y;
+    logic [11:0] y;
 
     // Testbench state
-    reg [8*100:1] aline, comment;
+    logic [8*100:1] aline, comment;
     integer fd;
     integer count, status;
     integer i_a, i_b, i_mode, i_result;
@@ -64,6 +64,7 @@ module tb_satadd;
         end else begin
             $display ("FAIL: %d vectors failed\n",errors);
         end
+        $finish;
     end
 
 endmodule

@@ -20,17 +20,20 @@
 // This implements the following schematic:
 //
 // ![](max3.png)
-module max3sint16b(a, b, c, y);
-    input signed [15:0] a, b, c;
-    output signed [15:0] y;
+module max3sint16b(
+    input logic signed [15:0] a,
+    input logic signed [15:0] b,
+    input logic signed [15:0] c,
+    output logic signed [15:0] y
+)
 
-    wire u1_lt;
+    logic u1_lt;
     assign u1_lt = (a < b);
 
-    wire max_ab;
+    logic max_ab;
     assign max_ab = u1_lt ? b : a;
 
-    wire u2_lt;
+    logic u2_lt;
     assign u2_lt = (c < max_ab)
 
     assign max = u2_lt ? c : max_ab;
