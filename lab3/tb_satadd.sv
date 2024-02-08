@@ -11,7 +11,7 @@ module tb_satadd;
     logic [11:0] y;
 
     // Testbench state
-    logic [8*100:1] aline, comment;
+    string aline, comment;
     integer fd;
     integer count, status;
     integer i_a, i_b, i_mode, i_result;
@@ -44,16 +44,23 @@ module tb_satadd;
         // Apply stimulus from test vector file.
         errors = 0;
         while ($fgets(aline,fd)) begin
-            status = $sscanf(aline, "%x %x %x %x %s", i_mode, i_a, i_b, i_result, comment);
+            if ($sscanf(aline, "%x %x %x %x", i_mode, i_a, i_b, i_result) !== 4) begin
+                $display("Error: unable to read data.");
+                $finish;
+            end
+            // There's no way to read a string containing whitespace using `%s` in a `sscanf` or `fscanf`.
+            // So, get the string from a specific character position in the file. Subtract two: omit the
+            // newline (-1) and the string is zero-indedex (another -1).
+            comment = aline.substr(14, aline.len() - 2);
             a = i_a;
             b = i_b;
             mode = i_mode;
             // Wait the outputs to propagate before testing them.
             #100
             if (i_result === y) begin
-                $display("%d(%t): PASS, mode: %x, a: %x, b: %x, y: %x %s\n", count, $time, mode, a, b, y, comment);
+                $display("%d(%t): PASS, mode: %x, a: %x, b: %x, y: %x %s", count, $time, mode, a, b, y, comment);
             end else begin
-                $display("%d(%t): FAIL, mode: %x, a: %x, b: %x, y (actual): %x, y (expected): %x %s\n", count, $time, mode, a, b, y, i_result, comment);
+                $display("%d(%t): FAIL, mode: %x, a: %x, b: %x, y (actual): %x, y (expected): %x %s", count, $time, mode, a, b, y, i_result, comment);
                 errors = errors + 1;
             end
             count = count + 1;
