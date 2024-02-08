@@ -12,7 +12,7 @@ module tb_max3sint16b;
 
     // A variable to hold a line of text (100 characters) read from a file. See
     // [section 3.6](../verilog_standard_1364-2005.pdf#page=42).
-    logic [8*100:1] aline;
+    string aline;
     // Store the file descriptor produced by opening a file.
     integer fd;
     // The number of tests run.
