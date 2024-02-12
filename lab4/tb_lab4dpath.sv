@@ -61,17 +61,18 @@ module tb_lab4dpath;
             // Delay for progagation of signals.
             #40
             if (i_result === y) begin
-                $display("%d(%t):PASS, x1: %x, x2: %x, x3: %x, y: %x\n", count, $time, x1, x2, x3, y);
+                $display("%d(%t):PASS, x1: %x, x2: %x, x3: %x, y: %x", count, $time, x1, x2, x3, y);
             end else begin
-                $display("%d(%t):FAIL, x1: %x, x2: %x, x3: %x, y (actual): %x, y (expected): %x\n", count, $time, x1, x2, x3, y, i_result);
+                $display("%d(%t):FAIL, x1: %x, x2: %x, x3: %x, y (actual): %x, y (expected): %x", count, $time, x1, x2, x3, y, i_result);
                 errors = errors + 1;
             end
+            ++count;
 		end
 
 		if (errors === 0) begin
-            $display("PASS: All vectors passed.\n");
+            $display("PASS: All vectors passed.");
         end else begin
-            $display("FAIL: %d vectors failed\n", errors);
+            $display("FAIL: %d vectors failed", errors);
         end
         $finish;
 
