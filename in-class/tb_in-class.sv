@@ -1,4 +1,4 @@
-// # tb_in-class.v - Test bench for the <code><a href="in-class.v">in-class.v</a></code> module
+// # tb_in-class.v - Test bench for the <code><a href="in-class.v">in-class.sv</a></code> module
 `timescale 1ns / 1ps
 
 module tb_in_class;
@@ -11,7 +11,7 @@ module tb_in_class;
 
     // An `integer` is essentially a 32-bit register. It's a convenient way to
     // declare and use 32-bit values.
-    integer i;
+    integer i, count;
     integer errors = 0;
 
     // [Instantiate](https://www.chipverify.com/verilog/verilog-module-instantiations)
@@ -46,6 +46,7 @@ module tb_in_class;
         b = 0;
         c = 0;
         reset = 1;
+        count = 0;
 
         // <a></a>Wait 100 ns for global reset to finish.
         #100;
@@ -55,22 +56,35 @@ module tb_in_class;
         // by printing output to the screen.
         $display("Applying vectors...\n");
 
-        // To test the lab1 module, apply all possible inputs (the values 0
-        // to 255) and check that each output matches with the input.
-        //
         // Begin by initializing some variables.
         i = 0;
         errors = 0;
         reset = 0;
-        
+
+        // Produce some data to use while testing.
         for (i = 0; i < 2**16; ++i) begin
             a = i;
             b = ~i;
             c = $urandom();
             #50;
+            // A sample test, commented out.
+            /**
+            if (y === (a & b)) begin
+                // The `$time` system function (see
+                // [Section 17.7.1](verilog_standard_1364-2005.pdf#page=339))
+                // returns the time, in units of the current timescale (1 ns for
+                // this testbench).
+                $display("%d(%t): PASS, a: 0x%x, b: 0x%x, c: 0x%x, y: 0x%x\n", count, $time, a, b, c, y);
+            end else begin
+                $display("%d(%t): FAIL, a: 0x%x, b: 0x%x, c: 0x%x, y (actual): 0x%x, y (expected): 0x%x\n", count, $time, a, b, c, y, a & b);
+                errors = errors + 1;
+            end
+            count = count + 1;
+            */
         end
 
-        // Error check after the loop completes.
+        // Error check after the loop completes. (Uncomment and modify the
+        // sample test above to make use of this feature.)
         if (errors == 0) begin
             $display("PASS: All test vectors passed\n");
         end else begin

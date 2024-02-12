@@ -7,16 +7,16 @@
 module tb_lab5dpath;
 
     // <p>Inputs</p>
-    reg clk;
-    reg [9:0] x1;
-    reg [9:0] x2;
-    reg [9:0] x3;
+    logic clk;
+    logic [9:0] x1;
+    logic [9:0] x2;
+    logic [9:0] x3;
 
     // <p>Outputs</p>
-    wire [9:0] y;
+    logic [9:0] y;
 
     // <p>Internal values</p>
-    reg [8*100:1] aline;
+    string aline;
     integer fd;
     integer i_a, i_b, i_c, i_result;
     integer errors;

@@ -11,7 +11,7 @@ module tb_lab4dpath;
 	logic [9:0] y;
 
 	// Variables for testing.
-	logic [8*100:1] aline;
+	string aline;
    	integer fd;
 	integer count, status;
    	integer i_a, i_b, i_c, i_result;
@@ -51,16 +51,19 @@ module tb_lab4dpath;
 		// Add stimulus here
 		errors = 0;
 		while ($fgets(aline, fd)) begin
-            status = $sscanf(aline,"%x %x %x %x", i_a, i_b, i_c, i_result);
+            if ($sscanf(aline,"%x %x %x %x", i_a, i_b, i_c, i_result) !== 4) begin
+                $display("Error: unable to read data.");
+                $finish;
+            end
             x1 = i_a;
             x2 = i_b;
             x3 = i_c;
             // Delay for progagation of signals.
             #40
             if (i_result === y) begin
-                $display("%d(%t):PASS, x1: %x, x2: %x, x3: %x, y: %x\n",count, $time, x1, x2, x3, y);
+                $display("%d(%t):PASS, x1: %x, x2: %x, x3: %x, y: %x\n", count, $time, x1, x2, x3, y);
             end else begin
-                $display("%d(%t):FAIL, x1: %x, x2: %x, x3: %x, y (actual): %x, y (expected): %x\n",count, $time, x1, x2, x3, y, i_result);
+                $display("%d(%t):FAIL, x1: %x, x2: %x, x3: %x, y (actual): %x, y (expected): %x\n", count, $time, x1, x2, x3, y, i_result);
                 errors = errors + 1;
             end
 		end

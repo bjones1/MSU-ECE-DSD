@@ -1,4 +1,6 @@
-// # `in-class.v` - skeleton code for in-class exercises
+// # `in-class.sv` - skeleton code for in-class exercises
+//
+// See also the [test bench](tb_in-class.sv).
 module in_class(
     input logic clk,
     input logic reset,
@@ -11,5 +13,5 @@ module in_class(
 );
 
     assign y = a & b;
-        
+
 endmodule

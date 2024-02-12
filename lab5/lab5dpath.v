@@ -7,7 +7,7 @@
 // </figure>
 // <p>Busses <code>k1</code>, <code>k2</code>, <code>k3</code> are the
 //     following constants:</p>
-// <table style="border-collapse: collapse;" border="1">
+// <table>
 //     <tbody>
 //         <tr>
 //             <td>Constant</td>
@@ -32,11 +32,11 @@
 //     </tbody>
 // </table>
 module lab5dpath(
-    input clk,
-	input signed [9:0] x1,
-	input signed [9:0] x2,
-	input signed [9:0] x3,
-	output signed [9:0] y
+    input logic clk,
+	input logic signed [9:0] x1,
+	input logic signed [9:0] x2,
+	input logic signed [9:0] x3,
+	output logic signed [9:0] y
 );
 
 endmodule
