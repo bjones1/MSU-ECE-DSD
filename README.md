@@ -9,7 +9,6 @@ If you see any bugs, please
 
 ## General
 
-- [Course syllabus](https://docs.google.com/document/d/1SVzBwgtMYdtuKy_2vAuaHrh8ZpcsFOyX7Fp7ipfZoR0/edit?usp=sharing)
 - Digilent's
   [Basys 3 board](https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/)
   and its
@@ -36,9 +35,10 @@ For more links, see the references on the last page of the
 
 ## Verilog
 
-- [Vivado Design Suite User Guide: Synthesis - Verilog Language Support](https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Verilog-Language-Support)
-- See
-  [Flop Inferrence in Verilog Synthesis](https://support.xilinx.com/s/article/1207129?language=en_US)
+- The [SystemVerilog standard](SystemVerilog_standard_1800-2017.pdf)
+- [Vivado Design Suite User Guide: Synthesis - SystemVerilog Language Support](https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/SystemVerilog-Support)
+- (old)
+  See [Flop Inferrence in Verilog Synthesis](https://support.xilinx.com/s/article/1207129?language=en_US)
   for Xilinx's rules on creating flip-flops in Verilog. Briefly: for an async
   set/reset, use `always @(posedge clk or posedge aset_or_clr)`.
 
