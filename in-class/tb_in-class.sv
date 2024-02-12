@@ -4,9 +4,11 @@
 
 module tb_in_class;
     // <p>Inputs to UUT</p>
-    logic a, b;
+    logic clk, reset;
+    logic [15:0] a, b, c;
     // <p>Outputs from UUT</p>
-    logic y;
+    logic [15:0] x, y, z;
+    
 
     // <p>An <code>integer</code> is essentially a 32-bit register. It's a
     //     convenient way to declare and use 32-bit values.</p>
@@ -27,17 +29,31 @@ module tb_in_class;
     //         lines earlier in this file).</li>
     // </ul>
     in_class uut (
+        .clk(clk),
+        .reset(reset),
         .a(a),
         .b(b),
-        .y(y)
+        .c(c),
+        .x(x),
+        .y(y),
+        .z(z)
     );
 
+    // <p>After 100 ns delay for reset, produce a 50 ns period clock.</p>
+    initial begin
+        clk = 0;
+        #100
+        forever #25 clk = ~clk;
+    end
+    
     initial begin
         // <p>Define the inital value for all inputs.</p>
         a = 0;
         b = 0;
+        c = 0;
+        reset = 1;
 
-        // <p><a id="delay-100"></a>Wait 100 ns for global reset to finish.</p>
+        // <p><a></a>Wait 100 ns for global reset to finish.</p>
         #100;
 
         // <p>A <a
@@ -51,6 +67,14 @@ module tb_in_class;
         // <p>Begin by initializing some variables.</p>
         i = 0;
         errors = 0;
+        reset = 0;
+        
+        for (i = 0; i < 2**16; ++i) begin
+            a = i;
+            b = ~i;
+            c = $urandom();
+            #50;
+        end
 
         // <p>Error check after the loop completes.</p>
         if (errors == 0) begin
