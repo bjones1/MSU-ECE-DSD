@@ -42,5 +42,6 @@
 
 ## Misc
 
+- [Test rework template](test_rework_template.docx)
 - [License](LICENSE.md)
 - [Table of contents](toc.md)
