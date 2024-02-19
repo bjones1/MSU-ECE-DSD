@@ -1,27 +1,28 @@
-// <h1><a href="lab5dpath.v">Lab 5</a> testbench</h1>
+// # [Lab 5](lab5dpath.v) testbench
 `timescale 1ns / 1ps
 
-// <p>The number of clock cycles required by the <code>lab5dpath</code> module to produce a result. Modify this based on the pipelining of your design.</p>
+// The number of clock cycles required by the `lab5dpath` module to produce a
+// result. Modify this based on the pipelining of your design.
 `define LATENCY (2)
 
 module tb_lab5dpath;
 
-    // <p>Inputs</p>
+    // Inputs
     logic clk;
     logic [9:0] x1;
     logic [9:0] x2;
     logic [9:0] x3;
 
-    // <p>Outputs</p>
+    // Outputs
     logic [9:0] y;
 
-    // <p>Internal values</p>
+    // Internal values
     string aline;
     integer fd;
     integer i_a, i_b, i_c, i_result;
     integer errors;
 
-    // <p>Instantiate the Unit Under Test (UUT)</p>
+    // Instantiate the Unit Under Test (UUT)
     lab5dpath uut (
         .x1(x1),
         .x2(x2),
@@ -30,7 +31,7 @@ module tb_lab5dpath;
         .y(y)
     );
 
-    // <p>After 100 ns delay for reset, produce a 50 ns period clock.</p>
+    // After 100 ns delay for reset, produce a 50 ns period clock.
     initial begin
         clk = 0;
         #100
@@ -38,14 +39,14 @@ module tb_lab5dpath;
     end
 
     initial begin
-        // <p>Initialize Inputs</p>
+        // Initialize Inputs
         x1 = 0;
         x2 = 0;
         x3 = 0;
 
         fd = $fopen("../../../../multadd_vectors.txt", "r");
         if (fd === 0) begin
-          // <p>for post-route simulation, one directory deeper</p>
+          // for post-route simulation, one directory deeper
           fd = $fopen("../../../../../multadd_vectors.txt", "r");
         end
 
@@ -54,10 +55,10 @@ module tb_lab5dpath;
           $finish;
         end
 
-        // <p>Wait 100 ns for global reset to finish</p>
+        // Wait 100 ns for global reset to finish
         #100;
 
-        // <p>Start a task to check each line in the simulus file.</p>
+        // Start a task to check each line in the simulus file.
         errors = 0;
         while ($fgets(aline, fd)) begin
             if ($sscanf(aline, "%x %x %x %x", i_a, i_b, i_c, i_result) !== 4) begin
@@ -68,7 +69,7 @@ module tb_lab5dpath;
             check_mult(i_a, i_b, i_c, i_result);
         end
 
-        // <p>Wait for the final few checks to complete.</p>
+        // Wait for the final few checks to complete.
         pipeline_wait();
         if (errors === 0)
             $display("PASS: All vectors passed.\n");
@@ -77,8 +78,8 @@ module tb_lab5dpath;
         $finish;
     end
 
-    // <p>Wait enough clocks for the pipelined multiply/add process to
-    //     produce a result.</p>
+    // Wait enough clocks for the pipelined multiply/add process to produce a
+    // result.
     task pipeline_wait;
         integer i;
         begin
@@ -88,8 +89,8 @@ module tb_lab5dpath;
         end
     endtask
 
-    // <p>Check if the output of the multiply/add agrees with the provided
-    //     expected value.</p>
+    // Check if the output of the multiply/add agrees with the provided expected
+    // value.
     task check_mult(
         input [9:0] a,
         input [9:0] b,

@@ -25,7 +25,6 @@
     1.  [max3sint16b.sv](lab2/max3sint16b.sv)
     2.  [tb_max3sint16b.sv](lab2/tb_max3sint16b.sv)
     3.  max3sint16b_vectors.txt
-    4.  lab2_report.docx
 3.  Lab 3
     1.  [Instructions](lab3/satadd.pdf)
     2.  [satadd.sv](lab3/satadd.sv)
@@ -38,7 +37,11 @@
     3.  [tb_lab4dpath.sv](lab4/tb_lab4dpath.sv)
     4.  Basys3_Master.xdc
     5.  multadd_vectors.txt
-    6.  lab4_report.docx
+5.  Lab 5
+    1.  [Instructions](lab5/multdpath_pipeline.pdf)
+    2.  [lab5dpath.sv](lab5/lab5dpath.sv)
+    3.  [tb_lab5dpath.sv](lab5/tb_lab5dpath.sv)
+    4.  [multadd_vectors.txt](lab5/multadd_vectors.txt)
 
 ## Misc
 
