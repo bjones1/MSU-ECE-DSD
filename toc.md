@@ -42,6 +42,19 @@
     2.  [lab5dpath.sv](lab5/lab5dpath.sv)
     3.  [tb_lab5dpath.sv](lab5/tb_lab5dpath.sv)
     4.  [multadd_vectors.txt](lab5/multadd_vectors.txt)
+6.  Lab 6
+    1.  Instructions
+    2.  Part 1
+        1.  [lab6dpath.sv](lab6/lab6_files_part1/lab6dpath.sv)
+        2.  [tb_lab6dpath.sv](lab6/lab6_files_part1/tb_lab6dpath.sv)
+        3.  [multadd_vectors.txt](lab6/lab6_files_part1/multadd_vectors.txt)
+    3.  Part 2
+        1.  [hw_testbench.sv](lab6/lab6_files_part2/hw_testbench.sv)
+        2.  [lfsr.sv](lab6/lab6_files_part2/lfsr.sv)
+        3.  [pulsegenms.sv](lab6/lab6_files_part2/pulsegenms.sv)
+        4.  [sevenseg.sv](lab6/lab6_files_part2/sevenseg.sv)
+        5.  [tb_hw_testbench.sv](lab6/lab6_files_part2/tb_hw_testbench.sv)
+    4.  report.docx
 
 ## Misc
 
