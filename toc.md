@@ -43,7 +43,7 @@
     3.  [tb_lab5dpath.sv](lab5/tb_lab5dpath.sv)
     4.  [multadd_vectors.txt](lab5/multadd_vectors.txt)
 6.  Lab 6
-    1.  Instructions
+    1.  [Instructions](lab6/multdpath_pipeline.pdf)
     2.  Part 1
         1.  [lab6dpath.sv](lab6/lab6_files_part1/lab6dpath.sv)
         2.  [tb_lab6dpath.sv](lab6/lab6_files_part1/tb_lab6dpath.sv)
