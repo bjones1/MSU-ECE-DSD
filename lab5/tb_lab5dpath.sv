@@ -6,7 +6,6 @@
 `define LATENCY (2)
 
 module tb_lab5dpath;
-
     // Inputs
     logic clk;
     logic [9:0] x1;
@@ -19,7 +18,7 @@ module tb_lab5dpath;
     // Internal values
     string aline;
     integer fd;
-    integer i_a, i_b, i_c, i_result;
+    logic [9:0] y_expected;
     integer errors;
 
     // Instantiate the Unit Under Test (UUT)
@@ -38,6 +37,20 @@ module tb_lab5dpath;
         forever #25 clk = ~clk;
     end
 
+    property p1;
+        logic [9:0] tmp;
+        @(negedge clk) (1, tmp = y_expected) ##(`LATENCY - 1) (y === tmp);
+    endproperty
+
+    assert property (p1)
+        begin
+            $write("PASS %t: x1: %x, x2: %x, x3: %x, y: %x %x\n", $time, x1, x2, x3, y, y_expected);
+        end else begin
+            $write("FAIL %t: x1: %x, x2: %x, x3: %x, y actual: %x, y expected: %x\n", $time, x1, x2, x3, y, y_expected);
+            errors = errors + 1;
+        end
+     
+    
     initial begin
         // Initialize Inputs
         x1 = 0;
@@ -61,53 +74,23 @@ module tb_lab5dpath;
         // Start a task to check each line in the simulus file.
         errors = 0;
         while ($fgets(aline, fd)) begin
-            if ($sscanf(aline, "%x %x %x %x", i_a, i_b, i_c, i_result) !== 4) begin
+            if ($sscanf(aline, "%x %x %x %x", x1, x2, x3, y_expected) !== 4) begin
                 $display("Error reading test vectors.");
                 $finish;
             end
             @(negedge clk);
-            check_mult(i_a, i_b, i_c, i_result);
         end
 
         // Wait for the final few checks to complete.
-        pipeline_wait();
+        @(negedge clk);
+        @(negedge clk);
+        @(negedge clk);
+        @(negedge clk);
+        @(negedge clk);
         if (errors === 0)
             $display("PASS: All vectors passed.\n");
         else
             $display("FAIL: %d vectors failed\n", errors);
         $finish;
     end
-
-    // Wait enough clocks for the pipelined multiply/add process to produce a
-    // result.
-    task pipeline_wait;
-        integer i;
-        begin
-            for (i = 0; i < `LATENCY; i = i + 1) begin
-                @(negedge clk);
-            end
-        end
-    endtask
-
-    // Check if the output of the multiply/add agrees with the provided expected
-    // value.
-    task check_mult(
-        input [9:0] a,
-        input [9:0] b,
-        input [9:0] c,
-        input [9:0] y_expected
-    );
-        begin
-            x1 = a;
-            x2 = b;
-            x3 = c;
-            pipeline_wait();
-            if (y_expected === y) begin
-                $write("PASS %t: x1: %x, x2: %x, x3: %x, y: %x\n", $time, a, b, c, y);
-            end else begin
-                $write("FAIL %t: x1: %x, x2: %x, x3: %x, y actual: %x, y expected: %x\n", $time, a, b, c, y, y_expected);
-                errors = errors + 1;
-            end
-        end
-    endtask
 endmodule
