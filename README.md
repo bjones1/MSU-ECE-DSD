@@ -89,7 +89,7 @@ A write transaction:
     data. Both may now deassert WVALID and WREADY.
 5.  Save: drive response on BRESP (write response data) and assert BVALID (write
     response is valid). The response is OK (2 types) or error (2 types).
-6.  Master: assert BREADY (ready for write response), indating that it has the
+6.  Master: assert BREADY (ready for write response), indicating that it has the
     write response.
 7.  The next rising clock edge completes the transaction. Master may now
     deassert BREADY; slave may deassert BVALID.
