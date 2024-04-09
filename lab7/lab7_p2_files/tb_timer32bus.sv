@@ -1,40 +1,40 @@
 `timescale 1ns / 1ps
 
 ////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company:
 // Engineer:
 //
 // Create Date:   19:17:21 09/14/2014
 // Design Name:   timer32bus
 // Module Name:   C:/ece4743/projects/lab6_solution_part2/tb_timer32bus.v
 // Project Name:  lab6_solution_part2
-// Target Device:  
-// Tool versions:  
-// Description: 
+// Target Device:
+// Tool versions:
+// Description:
 //
 // Verilog Test Fixture created by ISE for module: timer32bus
 //
 // Dependencies:
-// 
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 module tb_timer32bus;
 
 	// Inputs
-	reg clk;
-	reg reset;
-	reg [31:0] din;
-	reg wren;
-	reg rden;
-	reg [23:0] addr;
+	logic clk;
+	logic reset;
+	logic [31:0] din;
+	logic wren;
+	logic rden;
+	logic [23:0] addr;
 
 	// Outputs
-	wire [31:0] dout;
-	
+	logic [31:0] dout;
+
 parameter TMR1_BASE = 24'h9250A0;   //24 bit address
 parameter TMR2_BASE = 24'h3C74D0;   //24 bit address
 
@@ -48,21 +48,21 @@ parameter CON_REG = 24'h000002;
 
 	// Instantiate the Unit Under Test (UUT)
 	timer32bus uut (
-		.clk(clk), 
-		.reset(reset), 
-		.din(din), 
-		.dout(dout), 
-		.wren(wren), 
-		.rden(rden), 
+		.clk(clk),
+		.reset(reset),
+		.din(din),
+		.dout(dout),
+		.wren(wren),
+		.rden(rden),
 		.addr(addr)
 	);
-	
+
 	initial begin
 	 clk = 0;
 	 #100   //reset delay
 	 forever #20 clk = ~clk;
 	end
-	
+
 	integer errors;
 
 	initial begin
@@ -78,9 +78,9 @@ parameter CON_REG = 24'h000002;
 
 		// Wait 100 ns for global reset to finish
 		#100;
-		
+
 		reset = 0;
-		
+
 		@(negedge clk);
 		//write to t1 period register
 		wren=1;
@@ -94,8 +94,8 @@ parameter CON_REG = 24'h000002;
 		if (dout != 8) begin
 			$display("(%t)FAIL: Write/Read of T Period register failed, expected 8, got %d\n",$time(),dout);
 			errors = errors + 1;
-		end	
-		
+		end
+
 
 		addr = (ERR_BASE+PER_REG);
 		@(negedge clk);
@@ -103,9 +103,9 @@ parameter CON_REG = 24'h000002;
 		if (dout != 0) begin
 			$display("(%t)FAIL: Read of non-existent timer, expected 0, got %d\n",$time(),dout);
 			errors = errors + 1;
-		end	
+		end
 
-		//read T2 period register, should be initial value of 
+		//read T2 period register, should be initial value of
 		addr = (TMR2_BASE+PER_REG);
 		rden = 1;
 		@(negedge clk);
@@ -113,8 +113,8 @@ parameter CON_REG = 24'h000002;
 		if (dout != `PERIOD_INITIAL) begin
 			$display("(%t)FAIL: Read of Timer2 period regisgter failed, expected %d, got %d\n",$time(),`PERIOD_INITIAL,dout);
 			errors = errors + 1;
-		end	
-		
+		end
+
 		rden = 1;
 		din = 20;
 		wren = 1;  //write the period register
@@ -123,31 +123,31 @@ parameter CON_REG = 24'h000002;
 		if (dout != 20) begin
 			$display("(%t)FAIL: Write/Read of Timer2 period regisgter failed, expected %d, got %d\n",$time(),20,dout);
 			errors = errors + 1;
-		end	
-		wren = 1;		
+		end
+		wren = 1;
 		//start timer 1
 		addr = (TMR1_BASE+CON_REG);  //write to the control register
 		din = 1;  //set the Timer Enable bit
-		@(negedge clk);	
+		@(negedge clk);
 		//read timer one
-		wren = 0;	
+		wren = 0;
 		rden = 1;
 		addr = (TMR1_BASE+TMR_REG);  //read timer register
-		@(negedge clk);	
+		@(negedge clk);
 		if (dout != 1) begin
 			$display("(%t)FAIL: Timer 1 read/count, Expected %d, got %d\n",$time(),1,dout);
 			errors = errors + 1;
-		end	
-		@(negedge clk);	
+		end
+		@(negedge clk);
 		if (dout != 2) begin
 			$display("(%t)FAIL: Timer 1 read/count, Expected %d, got %d\n",$time(),2,dout);
 			errors = errors + 1;
-		end		
+		end
 		@(negedge clk);
 		if (dout != 3) begin
 			$display("(%t)FAIL: Timer 1 read/count, Expected %d, got %d\n",$time(),3,dout);
 			errors = errors + 1;
-		end	
+		end
 
 		//change to reading non-existant timer
 		addr = (ERR_BASE+TMR_REG);  //write to the control register
@@ -155,48 +155,40 @@ parameter CON_REG = 24'h000002;
 		if (dout != 0) begin
 			$display("(%t)FAIL: Reading non-existent Timer, expected %d, got %d\n",$time(),0,dout);
 			errors = errors + 1;
-		end		
+		end
 
 		//enable timer 2
-		wren = 1;		
+		wren = 1;
 		//start timer 1
 		addr = (TMR2_BASE+CON_REG);  //write to the control register
 		din = 1;  //set the Timer Enable bit
 		@(negedge clk);
-		
+
 		//read timer two
-		wren = 0;	
+		wren = 0;
 		rden = 1;
 		addr = (TMR2_BASE+TMR_REG);  //read timer register
-		@(negedge clk);	
+		@(negedge clk);
 		if (dout != 1) begin
 			$display("(%t)FAIL: Timer 2 read/count, Expected %d, got %d\n",$time(),1,dout);
 			errors = errors + 1;
-		end	
-		@(negedge clk);	
+		end
+		@(negedge clk);
 		if (dout != 2) begin
 			$display("(%t)FAIL: Timer 2 read/count, Expected %d, got %d\n",$time(),2,dout);
 			errors = errors + 1;
-		end		
+		end
 		@(negedge clk);
 		if (dout != 3) begin
 			$display("(%t)FAIL: Timer 2 read/count, Expected %d, got %d\n",$time(),3,dout);
 			errors = errors + 1;
-		end		
-		
-		
-		
-		
-		
-  
+		end
+
 		if (errors == 0) begin
 			$display("(%t)PASSED: All vectors passed\n",$time());
 		end else begin
 		  $display("(%t)FAILED: %d vectors failed\n",$time(),errors);
-		end  
-
-
+		end
 	end
-      
-endmodule
 
+endmodule
