@@ -55,7 +55,6 @@ module tb_timer32;
         .addr (addr)
     );
 
-
     initial begin
         clk = 0;
         #100  //reset delay
@@ -151,7 +150,6 @@ module tb_timer32;
         //change address
         addr = `CON_REG;
 
-
         @(posedge clk);  //timer =1
         //read the control register, all three bits should be set!
         //need to read on posedge because clear on read
@@ -229,15 +227,11 @@ module tb_timer32;
             errors = errors + 1;
         end
 
-
-
         if (errors == 0) begin
             $display("(%t)PASSED: All vectors passed\n", $time());
         end else begin
             $display("(%t)FAILED: %d vectors failed\n", $time(), errors);
         end
-
-
+        $finish;
     end
-
 endmodule
