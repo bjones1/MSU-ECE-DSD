@@ -81,6 +81,10 @@ module tb_fifo;
           //for post-route simulation, one directory deeper
           fd = $fopen("../../../../fifo_vectors.txt","r");
         end
+		if (fd == 0) begin
+          //for post-route simulation, one directory deeper
+          fd = $fopen("../../../../../fifo_vectors.txt","r");
+        end
                 
         if (fd == 0) begin
           $display("Cannot open vectors file 'fifo_vectors.txt.txt', simulation exiting");
