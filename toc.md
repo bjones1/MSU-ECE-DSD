@@ -55,6 +55,20 @@
         4.  [sevenseg.sv](lab6/lab6_files_part2/sevenseg.sv)
         5.  [tb_hw_testbench.sv](lab6/lab6_files_part2/tb_hw_testbench.sv)
     4.  report.docx
+7. Lab 7
+    1. Part 1
+        1. [timer32.sv](lab7/lab7_p1_files/timer32.sv)
+        2. [tb_timer32.sv](lab7/lab7_p1_files/tb_timer32.sv)
+    2. Part 2
+        1. [tb_timer32bus.sv](lab7/lab7_p2_files/tb_timer32bus.sv)
+    3. Part 3
+        1. [timer_p3.sv](lab7/lab7_p3_files/timer_p3.sv)
+8. Lab 8
+    1. [fifo.pdf](lab8/fifo.pdf)
+    2. [fifo.sv](lab8/fifo.v)
+    3. [tb_fifo.v](lab8/tb_fifo.v)
+    4. [fifo_vectors.txt](lab8/fifo_vectors.txt)
+    5. [report.docx](lab8/report.docx)
 
 ## Misc
 
