@@ -64,6 +64,7 @@
         1. [tb_timer32bus.sv](lab7/lab7_p2_files/tb_timer32bus.sv)
     4. Part 3
         1. [timer_p3.sv](lab7/lab7_p3_files/timer_p3.sv)
+        2. Basys3_Master.xdc
     5. report.docx
 8. Lab 8
     1. [fifo.pdf](lab8/fifo.pdf)
