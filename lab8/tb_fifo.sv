@@ -2,17 +2,17 @@
 module tb_fifo;
 
     // Inputs
-    reg clk;
-    reg reset;
-    reg sclr;
-    reg wren;
-    reg rden;
-    reg [7:0] din;
+    logic clk;
+    logic reset;
+    logic sclr;
+    logic wren;
+    logic rden;
+    logic [7:0] din;
 
     // Outputs
-    wire full;
-    wire empty;
-    wire [7:0] dout;
+    logic full;
+    logic empty;
+    logic [7:0] dout;
 
     // Instantiate the Unit Under Test (UUT)
     fifo uut (
@@ -37,7 +37,7 @@ module tb_fifo;
     integer writeval;
     integer fd;
     integer count,status;
-    reg[8*100:1] aline;
+    logic[8*100:1] aline;
 
     integer i_sclr, i_wren, i_wdata, i_rden, i_rdata, i_full, i_empty;
 
@@ -57,6 +57,10 @@ module tb_fifo;
         if (fd == 0) begin
             //for post-route simulation, one directory deeper
             fd = $fopen("../../../../fifo_vectors.txt","r");
+        end
+        if (fd == 0) begin
+            //for post-route simulation, one directory deeper
+            fd = $fopen("../../../../../fifo_vectors.txt","r");
         end
 
         if (fd == 0) begin
