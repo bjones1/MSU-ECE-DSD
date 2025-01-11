@@ -25,7 +25,7 @@ output [7:0] dout;
 output txout;       //serial data out
 input [2:0] addr;
 
-reg [7:0] dout;
+logic [7:0] dout;
 
 parameter PERIOD = 8'h1A;  
 
