@@ -13,7 +13,7 @@ module inferred_latch(
 );
 
     always_comb begin
-        case (a)
+        case (c)
             2'b00: x = a & b;
             2'b01: x = a | b;
             2'b10: x = a ^ b;
