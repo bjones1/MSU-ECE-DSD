@@ -1,7 +1,7 @@
 // # `in-class.sv` - skeleton code for in-class exercises
 //
 // See also the [test bench](tb_in-class.sv).
-module in_class(
+module inferred_latch(
     input logic clk,
     input logic reset,
     input logic [15:0] a,
@@ -12,6 +12,13 @@ module in_class(
     output logic [15:0] z
 );
 
-    assign y = a & b;
+    always_comb begin
+        case (a)
+            2'b00: x = a & b;
+            2'b01: x = a | b;
+            2'b10: x = a ^ b;
+            2'b11: x = ~(a & b);
+        endcase
+    end
 
 endmodule
