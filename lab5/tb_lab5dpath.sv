@@ -22,13 +22,7 @@ module tb_lab5dpath;
     integer errors;
 
     // Instantiate the Unit Under Test (UUT)
-    lab5dpath uut (
-        .x1 (x1),
-        .x2 (x2),
-        .x3 (x3),
-        .clk(clk),
-        .y  (y)
-    );
+    lab5dpath uut (.*);
 
     // After 100 ns delay for reset, produce a 50 ns period clock.
     initial begin
@@ -36,16 +30,25 @@ module tb_lab5dpath;
         #100 forever #25 clk = ~clk;
     end
 
+    // This property states that `y` should match `y_expected` `LATENCY` clocks later.
     property p1;
         logic [9:0] tmp;
-        @(negedge clk) (1,
+        // On each falling clock edge,
+        @(negedge clk)
+        // Always
+        (1,
+        // remember `y_expected`,
         tmp = y_expected
-        ) ##(`LATENCY-1) (y === tmp);
+        // then compare it with `y` `LATENCY` clocks later.
+        ) ##(`LATENCY-1) (y ==? tmp);
     endproperty
 
+    // Property p1 must hold.
     assert property (p1) begin
+        // When it holds, report success.
         $write("PASS %t: x1: %x, x2: %x, x3: %x, y: %x %x\n", $time, x1, x2, x3, y, y_expected);
     end else begin
+        // When it does not hold, report failure.
         $write("FAIL %t: x1: %x, x2: %x, x3: %x, y actual: %x, y expected: %x\n", $time, x1, x2,
                x3, y, y_expected);
         errors = errors + 1;
