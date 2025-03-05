@@ -1,15 +1,10 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-module timertop (
-    LED,
-    SW,
-    board_clk
-);
-    output logic [6:0] LED;
-    input logic [0:0] SW;
-    input logic board_clk;
 
+module timertop (
+    output logic [6:0] LED,
+    input logic [0:0] SW,
+    input logic board_clk
+);
     logic reset;
     logic clk_50mhz, clk;
 
@@ -24,10 +19,11 @@ module timertop (
     logic swq1;
 
     // generate reset signal by synchronizing SW[0]
-    always @(posedge clk) begin
+    always_ff @(posedge clk) begin
         swq1  <= SW[0];
         reset <= swq1;
     end
 
     // fill in the rest of this module.
+
 endmodule
