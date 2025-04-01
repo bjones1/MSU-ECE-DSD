@@ -83,6 +83,6 @@ Labs
 Misc
 ----
 
-*   [Test rework template](test_rework_template.docx)
+*   [Test rework template](test_rework_template.md)
 *   [License](LICENSE.md)
 *   [Table of contents](toc.md)
