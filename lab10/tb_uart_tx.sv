@@ -25,16 +25,16 @@
 module tb_uart_tx;
 
 	// Inputs
-	reg clk;
-	reg reset;
-	reg wren;
-	reg rden;
-	reg [7:0] din;
-	reg [2:0] addr;
+	logic clk;
+	logic reset;
+	logic wren;
+	logic rden;
+	logic [7:0] din;
+	logic [2:0] addr;
 
 	// Outputs
-	wire [7:0] dout;
-	wire txout;
+	logic [7:0] dout;
+	logic txout;
 
 parameter CLK_PERIOD=20;       //clock period in ns.  20 ns = 50 MHZ	
 //parameter UUT_PERIOD=8'h1A;    //57600 baudrate
@@ -68,7 +68,7 @@ parameter CHARACTER_PERIOD = (CLK16X_PERIOD * 16 * 10);
 	 forever #10 clk = ~clk;
 	end
 	
-	reg [7:0] outdata;
+	logic [7:0] outdata;
 	integer i;
 	
 	
@@ -165,7 +165,7 @@ parameter CHARACTER_PERIOD = (CLK16X_PERIOD * 16 * 10);
 	 end
 	endtask
 	
-	 reg checktrigger;
+	 logic checktrigger;
 	 
 	 
 	task applydata;
@@ -292,7 +292,7 @@ parameter CHARACTER_PERIOD = (CLK16X_PERIOD * 16 * 10);
 	
 	
 	
-	reg [7:0] checkdata;
+	logic [7:0] checkdata;
 	always @(posedge checktrigger) begin
 	//check output
 	  while(head !== tail) begin

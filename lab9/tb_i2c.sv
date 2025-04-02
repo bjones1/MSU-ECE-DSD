@@ -3,19 +3,19 @@
 module tb_i2c;
 
     // Inputs
-    reg clk;
-    reg reset;
-    reg [7:0] din;
-    reg wren;
-    reg rden;
-    reg [1:0] addr;
-    reg sdin;
+    logic clk;
+    logic reset;
+    logic [7:0] din;
+    logic wren;
+    logic rden;
+    logic [1:0] addr;
+    logic sdin;
 
     // Outputs
-    wire [7:0] dout;
-    wire sclk;
-    wire sdout;
-    wire dir;
+    logic [7:0] dout;
+    logic sclk;
+    logic sdout;
+    logic dir;
 
     parameter SCLK_PERIOD=2500;  //sclk period in ns (2.5 us = 2500 ns, 400 KHz)
     parameter CHARACTER_PERIOD = (SCLK_PERIOD*9);
@@ -199,7 +199,7 @@ module tb_i2c;
     endtask
 
     integer i;
-    reg [7:0]shiftdata;
+    logic [7:0]shiftdata;
 
     task checkWrite;
         input [7:0] expectedval;
@@ -389,7 +389,7 @@ module tb_i2c;
         end
     endtask
 
-    reg readAckBit;
+    logic readAckBit;
 
     task doRead;
         input[7:0] readvalue;
